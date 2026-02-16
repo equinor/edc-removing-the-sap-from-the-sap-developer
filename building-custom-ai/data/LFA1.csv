@@ -1,0 +1,101 @@
+MANDT,LFNR,NAME1,LAND1,ORT01,PSTLZ,STRAS,REGIO
+"100","1000","Electro Semicon","FR","Bordeaux","70142","147 Pine Ave","NAQ"
+"100","1001","Electro Circuits","CN","Chengdu","44438","765 Elm Blvd",
+"100","1002","Infinity Networks","FR","Marseille","38746","142 Elm Blvd",
+"100","1003","Optima Networks","CA","Toronto","30033","643 Oak Blvd","ON"
+"100","1004","Vertex Semicon","CA","Calgary","60019","611 Maple Ln","AB"
+"100","1005","Precision Dynamics","CN","Beijing","99166","739 Main Ln","BJ"
+"100","1006","Quantum Semicon","DE","Berlin","48469","446 Oak Blvd",
+"100","1007","Hyper Labs","DE","Stuttgart","33416","520 Main Rd",
+"100","1008","Digital Works","CN","Shanghai","30032","383 Oak Ln","SH"
+"100","1009","Byte Works","CA","Edmonton","52487","501 Main St",
+"100","1010","Circuit Micro","DE","Munich","17592","247 Elm St","BAV"
+"100","1011","Logic Supplies","FR","Paris","79822","785 Oak Ave","IDF"
+"100","1012","Neo Wave","CN","Shanghai","44741","541 Elm Blvd","SH"
+"100","1013","Precision Links","CN","Hangzhou","36365","731 Pine Blvd",
+"100","1014","Neo Dynamics","FR","Nice","69177","124 Oak Ave",
+"100","1015","Electro Industries","DE","Berlin","87110","568 Oak Ln",
+"100","1016","Volt Dynamics","CA","Toronto","92719","61 Oak St","ON"
+"100","1017","Optima Micro","DE","Berlin",,,
+"100","1018","Hyper Components","CN","Shanghai","84847","591 Maple Ave","SH"
+"100","1019","Blue Components","FR","Lyon","22363","100 Maple Rd","ARA"
+"100","1020","Infinity Supplies","FR","Toulouse","17100","690 Main St",
+"100","1021","Hyper Semicon","DE","Berlin","42591","197 Oak Ln",
+"100","1022","Neo Electronics","US","San Francisco","34050","286 Maple Ave","CA"
+"100","1023","Tech Dynamics","FR","Nice","22833","52 Elm St",
+"100","1024","Electro Systems","US","Chicago","63269","498 Maple Ave",
+"100","1025","Circuit Devices","CA","Vancouver","59672","3 Maple Rd","BC"
+"100","1026","Volt Micro","DE","Frankfurt","82845","678 Maple Ave",
+"100","1027","Byte Semicon","DE","Munich","17665","594 Elm St","BAV"
+"100","1028","Fusion Devices","CA","Toronto","86569","489 Elm Ln","ON"
+"100","1029","Circuit Parts","CA","Edmonton","20500","872 Oak St",
+"100","1030","Smart Networks","CA","Ottawa","40828","414 Main Ln",
+"100","1031","Fusion Components","CN","Chengdu",,,
+"100","1032","Tech Electronics","CN","Chengdu","51467","958 Pine Ave",
+"100","1033","Smart Works","US","Los Angeles","61876","135 Pine Blvd",
+"100","1034","Core Circuits","CA","Toronto","70068","637 Elm St","ON"
+"100","1035","Digital Devices","CN","Shanghai","76307","272 Oak Rd","SH"
+"100","1036","Core Group","US","Los Angeles","47353","162 Maple Ln",
+"100","1037","Crystal Circuits","CN","Hangzhou","79329","9 Elm Rd",
+"100","1038","Nano Links","US","Los Angeles","25129","912 Main Ln",
+"100","1039","Crystal Systems","DE","Hamburg","89276","216 Pine Ave",
+"100","1040","Quantum Supplies","CN","Guangzhou","42914","928 Main St",
+"100","1041","Blue Supplies","DE","Berlin",,,
+"100","1042","Fusion Dynamics","FR","Nice","66057","575 Main St",
+"100","1043","Nano Devices","US","Seattle","14722","855 Pine Ln",
+"100","1044","Byte Wave","US","San Francisco","26704","43 Pine Rd","CA"
+"100","1045","Optima Components","DE","Munich","99399","256 Main Rd","BAV"
+"100","1046","Crystal Labs","FR","Nice","30257","948 Oak Ave",
+"100","1047","Quantum Parts","FR","Paris","33509","755 Pine Blvd","IDF"
+"100","1048","Pixel Dynamics","DE","Munich","24168","392 Main Blvd","BAV"
+"100","1049","Hyper Supplies","US","San Francisco","55830","313 Oak Ave","CA"
+"200","1000","Electro Semicon","FR","Bordeaux","70142","147 Pine Ave","NAQ"
+"200","1001","Electro Circuits","CN","Chengdu","44438","765 Elm Blvd",
+"200","1002","Infinity Networks","FR","Marseille","38746","142 Elm Blvd",
+"200","1003","Optima Networks","CA","Toronto","30033","643 Oak Blvd","ON"
+"200","1004","Vertex Semicon","CA","Calgary","60019","611 Maple Ln","AB"
+"200","1005","Precision Dynamics","CN","Beijing","99166","739 Main Ln","BJ"
+"200","1006","Quantum Semicon","DE","Berlin","48469","446 Oak Blvd",
+"200","1007","Hyper Labs","DE","Stuttgart",,,
+"200","1008","Digital Works","CN","Shanghai","30032","383 Oak Ln","SH"
+"200","1009","Byte Works","CA","Edmonton","52487","501 Main St",
+"200","1010","Circuit Micro","DE","Munich","17592","247 Elm St","BAV"
+"200","1011","Logic Supplies","FR","Paris","79822","785 Oak Ave","IDF"
+"200","1012","Neo Wave","CN","Shanghai","44741","541 Elm Blvd","SH"
+"200","1013","Precision Links","CN","Hangzhou","36365","731 Pine Blvd",
+"200","1014","Neo Dynamics","FR","Nice","69177","124 Oak Ave",
+"200","1015","Electro Industries","DE","Berlin","87110","568 Oak Ln",
+"200","1016","Volt Dynamics","CA","Toronto","92719","61 Oak St","ON"
+"200","1017","Optima Micro","DE","Berlin","77391","244 Pine Blvd",
+"200","1018","Hyper Components","CN","Shanghai","84847","591 Maple Ave","SH"
+"200","1019","Blue Components","FR","Lyon","22363","100 Maple Rd","ARA"
+"200","1020","Infinity Supplies","FR","Toulouse",,,
+"200","1021","Hyper Semicon","DE","Berlin","42591","197 Oak Ln",
+"200","1022","Neo Electronics","US","San Francisco","34050","286 Maple Ave","CA"
+"200","1023","Tech Dynamics","FR","Nice","22833","52 Elm St",
+"200","1024","Electro Systems","US","Chicago","63269","498 Maple Ave",
+"200","1025","Circuit Devices","CA","Vancouver","59672","3 Maple Rd","BC"
+"200","1026","Volt Micro","DE","Frankfurt","82845","678 Maple Ave",
+"200","1027","Byte Semicon","DE","Munich","17665","594 Elm St","BAV"
+"200","1028","Fusion Devices","CA","Toronto","86569","489 Elm Ln","ON"
+"200","1029","Circuit Parts","CA","Edmonton","20500","872 Oak St",
+"200","1030","Smart Networks","CA","Ottawa","40828","414 Main Ln",
+"200","1031","Fusion Components","CN","Chengdu",,,
+"200","1032","Tech Electronics","CN","Chengdu","51467","958 Pine Ave",
+"200","1033","Smart Works","US","Los Angeles","61876","135 Pine Blvd",
+"200","1034","Core Circuits","CA","Toronto","70068","637 Elm St","ON"
+"200","1035","Digital Devices","CN","Shanghai","76307","272 Oak Rd","SH"
+"200","1036","Core Group","US","Los Angeles","47353","162 Maple Ln",
+"200","1037","Crystal Circuits","CN","Hangzhou","79329","9 Elm Rd",
+"200","1038","Nano Links","US","Los Angeles","25129","912 Main Ln",
+"200","1039","Crystal Systems","DE","Hamburg",,,
+"200","1040","Quantum Supplies","CN","Guangzhou","42914","928 Main St",
+"200","1041","Blue Supplies","DE","Berlin","10464","342 Oak Rd",
+"200","1042","Fusion Dynamics","FR","Nice",,,
+"200","1043","Nano Devices","US","Seattle","14722","855 Pine Ln",
+"200","1044","Byte Wave","US","San Francisco","26704","43 Pine Rd","CA"
+"200","1045","Optima Components","DE","Munich","99399","256 Main Rd","BAV"
+"200","1046","Crystal Labs","FR","Nice","30257","948 Oak Ave",
+"200","1047","Quantum Parts","FR","Paris","33509","755 Pine Blvd","IDF"
+"200","1048","Pixel Dynamics","DE","Munich","24168","392 Main Blvd","BAV"
+"200","1049","Hyper Supplies","US","San Francisco","55830","313 Oak Ave","CA"
