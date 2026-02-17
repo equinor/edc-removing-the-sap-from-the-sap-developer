@@ -1,12 +1,11 @@
 # Preparation
 
-In this session, you will create two CAP applications. The apps are developed locally
-using Visual Studio Code and the [_cds toolkit_](https://cap.cloud.sap/docs/tools/cds-cli).
-In this preparation section, you install the _cds toolkit_ and set up the local workspace
+In this session, you will create two CAP applications. The apps are developed in SAP Build Code.
+In this preparation section, you will  set up the local workspace
 where you develop the apps.
 
 
-## Preparation 1 - Install latest version of the cds toolkit
+## Preparation 1 - Create devspace
 
 1. Open a console (Command Prompt).
     <br>![](/exercises/ex0/images/00_01_0010.png)
@@ -25,7 +24,7 @@ where you develop the apps.
 
 
 
-## Preparation 2 - Setup workspace
+## Preparation 2 - Clone
 
 On the TechEd machines, you have a local user of the form `EMEAnnnn` (with `nnnn` being some number).
 
