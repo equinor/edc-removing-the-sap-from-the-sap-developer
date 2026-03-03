@@ -13,8 +13,10 @@ where you develop the apps.
 2. Go to Dev Space Manager
      <br>![](/exercises/ex0/images/Space_link.png)
 
-4. Create a Dev Space of type "Full Stack Development"
+4. Create a new Dev Space
     <br>![](/exercises/ex0/images/create_devspace.png)
+
+5. Choose type "Full Stack Development"
    
     <br>![](/exercises/ex0/images/create_devsspace2.png)
 
