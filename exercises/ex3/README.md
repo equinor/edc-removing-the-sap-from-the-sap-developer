@@ -1,8 +1,8 @@
-# Exercise 3 - Consume Data Product "Customer" from S/4
+# Exercise 3 - Consume API "Business Partner" from S/4
 
 From a modelling point of view, there is no difference between consuming
 data from another CAP app (like you did in the previous exercise) or consuming
-a Data Product:
+an API:
 * you import a package that describes the API
 * you define consumption views on top of the imported entities 
 * you use the consumption views in the model
@@ -27,8 +27,8 @@ in [SAP Business Accelerator Hub](https://api.sap.com/).
 
     <br>![](/exercises/ex3/images/03_01_0020.png)
 
-3. Here you can browse the available Data Products.
-Enter "Customer" in the search field and press "Return".
+3. Here you can browse the available API's.
+Enter "Business Partner" in the search field and press "Return".
 
     <br>![](/exercises/ex3/images/03_01_0030.png)
 
@@ -40,8 +40,8 @@ Enter "Customer" in the search field and press "Return".
 
 ## Exercise 3.2 - Download Data Product metadata
 
-After completing these steps, you will have downloaded a CSN file with the metadata of
-Data Product "Customer" to _ws/xtravels_.
+After completing these steps, you will have downloaded a EDMX file with the metadata of
+API "Business Partner" to _ws/xtravels_.
 
 1. At the bottom of the screen for Data Product "Customer", follow the link to the
 [Delta Sharing API](https://api.sap.com/api/sap-s4com-Customer-v1/overview).
