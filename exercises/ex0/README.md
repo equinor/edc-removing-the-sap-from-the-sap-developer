@@ -13,11 +13,9 @@ where you develop the apps.
 2. Go to Dev Space Manager
      <br>![](/exercises/ex0/images/Space_link.png)
 
-4. Check the version:
-    ```sh
-    cds v
-    ```
-    You should have version `9.4.4` of `@sap/cds`.
+4. Create a Dev Space of type "Full Stack Development"
+    <br>![](/exercises/ex0/images/create_devspace.png)
+   <br>![](/exercises/ex0/images/create_devsspace2.png)
 
 
 
