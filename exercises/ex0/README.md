@@ -16,7 +16,7 @@ where you develop the apps.
 4. Create a new Dev Space
     <br>![](/exercises/ex0/images/create_devspace.png)
 
-5. Choose type "Full Stack Development"
+5. Choose type "Full Stack Cloud Application"
    
     <br>![](/exercises/ex0/images/create_devsspace2.png)
 
