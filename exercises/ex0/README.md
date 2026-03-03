@@ -15,7 +15,7 @@ where you develop the apps.
 
 4. Create a Dev Space of type "Full Stack Development"
     <br>![](/exercises/ex0/images/create_devspace.png)
-   <br>![](/exercises/ex0/images/create_devsspace2.png)
+    <br>![](/exercises/ex0/images/create_devsspace2.png)
 
 
 
