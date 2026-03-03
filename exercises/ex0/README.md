@@ -7,16 +7,13 @@ where you develop the apps.
 
 ## Preparation 1 - Create devspace
 
-1. Open a console (Command Prompt).
-    <br>![](/exercises/ex0/images/00_01_0010.png)
+1. Go to SAP Build.
+    <br>![](/exercises/ex0/images/Build_link.png)
 
-2. Install the latest version of the [_cds toolkit_](https://cap.cloud.sap/docs/tools/cds-cli) globally. In the console, run the command
-    ```sh
-    npm i -g @sap/cds-dk --prefix "C:\software\CLI\CDS"
-    ```
-    > The --prefix option is only needed due to the setup of the TechEd machines. If you are running this tutorial on your own machine, omit it.
+2. Go to Dev Space Manager
+     <br>![](/exercises/ex0/images/Space_link.png)
 
-3. Check the version:
+4. Check the version:
     ```sh
     cds v
     ```
