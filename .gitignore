@@ -1,0 +1,8 @@
+*building-custom-ai/cap-app/default-env*
+*building-custom-ai/cap-app/env_cloud*
+*building-custom-ai/rag-notebook/env_config*
+*building-custom-ai/rag-notebook/env_cloud*
+*node_modules*
+*db.sqlite*
+*DS_Store*
+*.venv*

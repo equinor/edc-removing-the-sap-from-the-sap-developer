@@ -1,0 +1,19 @@
+{
+    "VCAP_SERVICES": {
+        "aicore": [
+            {
+                "label": "",
+                "plan": "",
+                "name": "",
+                "credentials": {
+                    "clientid": "",
+                    "clientsecret": "",
+                    "url": "",
+                    "serviceurls": {
+                        "AI_API_URL": ""
+                    }
+                }
+            }
+        ]
+    }
+}
