@@ -24,28 +24,19 @@ in [SAP Business Accelerator Hub](https://api.sap.com/).
     <br>![](/exercises/ex3/images/03_01_0010.png)
 
 2. Select the Product "SAP S/4HANA Cloud Private Edition".
-3. Select APIs and ODATA V2. Search for Business Partner 
+3. Select APIs and ODATA V2. Search for Business Partner. Select the API called "Business Partner (A2X)". 
 
     <br>![](/exercises/ex3/images/03_01_0010.png)
 
-Note: You can also try the Joule AI assistant to find this API. Try requesting something like: " I am on S/4 private cloud and am looking for an odata API for Business Partner with endpoint Customer".
+Note: You can also try the Joule AI assistant to find this API. Try requesting something like: " I am on S/4 private cloud and am looking for an odata API for Business Partner with endpoint Customer". It may or may not work (the assistant is in beta phase and seems to freeze a lot :) )
 
 
-## Exercise 3.2 - Download Data Product metadata
+## Exercise 3.2 - Download API metadata
 
 After completing these steps, you will have downloaded a EDMX file with the metadata of
-API "Business Partner" to _ws/xtravels_.
+API "Business Partner (A2X) " to _ws/xtravels_.
 
-1. At the bottom of the screen for Data Product "Customer", follow the link to the
-[Delta Sharing API](https://api.sap.com/api/sap-s4com-Customer-v1/overview).
-
-    <br>![](/exercises/ex3/images/03_02_0010.png)
-
-2. On this page, you find the "ORD ID" that uniquely identifies this API.
-The ID is based on the [Open Resource Discovery (ORD)](https://open-resource-discovery.github.io/specification/introduction) protocol.
-The API is described as "CSN Interop JSON", which can be downloaded from here.
-
-    <br>![](/exercises/ex3/images/03_02_0020.png)
+1. At the bottom of the screen for API "Business Partner (A2X)" go the the API Specification section and download the EDMX 
 
 2. Download the CSN Interop JSON. It will probably be stored
 as file _sap-s4com-Customer-v1.json_ in directory _C:\Users\TE-XX\Downloads_.
