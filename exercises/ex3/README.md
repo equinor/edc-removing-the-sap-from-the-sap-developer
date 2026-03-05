@@ -28,7 +28,7 @@ in [SAP Business Accelerator Hub](https://api.sap.com/).
 
     <br>![](/exercises/ex3/images/03_01_0010.png)
 
-Note: You can also try the Joule AI chat to find this API. Try requesting something like: " I am on S/4 private cloud and am looking for an odata API with endpoint Customer".
+Note: You can also try the Joule AI assistant to find this API. Try requesting something like: " I am on S/4 private cloud and am looking for an odata API for Business Partner with endpoint Customer".
 
 
 ## Exercise 3.2 - Download Data Product metadata
