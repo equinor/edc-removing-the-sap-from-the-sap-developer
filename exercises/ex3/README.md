@@ -8,7 +8,7 @@ an API:
 * you use the consumption views in the model
 
 In this exercise, you will import the metadata for S/4 Data Product "Customer" to the xtravels app.
-You will then replace local entity `Passenger` with entity `Customer` from the Data Product.
+You will then replace local entity `Passenger` with entity `Customer` from the Business Partner API.
 
 <br>![](/exercises/ex3/images/03_00_0010.png)
 
