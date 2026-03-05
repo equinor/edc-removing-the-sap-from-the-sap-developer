@@ -198,8 +198,31 @@ the API entity `Customers` reading data from the S/4 sandbox system S09.
 
    DRAWING OF THE ARCHITECHTURE
 
-2. Project.json
-   You have defined the new service. And now it needs to connect to the destination and the correct odata service in S/4
+2. package.json
+   You have defined the new service. And now it needs to connect to the destination and the correct odata service in S/4.
+   Enter the following cds section in the package.json file
+    ```json
+    cds": {
+    "requires": {
+      "connectivity": true,
+      "destination": true,
+      "html5-repo": true,
+      "authentication": "xsuaa",
+      "API_BUSINESS_PARTNER": {
+        "kind": "odata-v2",
+        "model": "srv/external/API_BUSINESS_PARTNER",
+        "credentials": {
+          "destination": "EDC_API_BUSINESS_PARTNER",
+          "path": "/sap/opu/odata/sap/API_BUSINESS_PARTNER"
+        }
+      },
+      "[production]": {
+        "auth": "xsuaa"
+      }
+    }
+  }
+    ```
+   
 
 Following the CAP principle of "local development and testing", you first
 test the xtravels app with the Data Product entities being mocked by local
