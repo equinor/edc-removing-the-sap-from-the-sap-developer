@@ -140,16 +140,20 @@ This is the same product catalog you used in the notebook -- 75 IT accessories w
 Run the following from the `cap-app-exercise/` directory:
 
 ```bash
-npm install
-cds watch
+npm install # Install dependencies
+cds deploy --to sqlite # Deploys seed data to DB
+cds watch # Start server
 ```
 
-`npm install` downloads all dependencies defined in `package.json`. `cds watch` is a development command that:
+`npm install` downloads all dependencies defined in `package.json`. 
 
-1. Deploys the CDS schema to an in-memory SQLite database.
+`cds deploy --to sqlite` is a command that:
+1. Deploys the CDS schema to an SQLite database.
 2. Loads the CSV seed data into the database.
-3. Starts a local HTTP server (default: port 4004).
-4. Watches for file changes and restarts automatically.
+
+`cds watch` is a development command that:
+1. Starts a local HTTP server (default: port 4004).
+2. Watches for file changes and restarts automatically.
 
 Open your browser and navigate to:
 
