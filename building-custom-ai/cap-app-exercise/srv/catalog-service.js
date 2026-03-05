@@ -5,17 +5,31 @@
  *   POST /api/askQuestion  ->  embed question -> vector search -> LLM call -> response
  */
 
-// ── Exercise 7: Add imports, configuration, and service class below ──
-// The helper functions at the bottom of this file are already provided for you.
+const cds = require('@sap/cds');
+
+// ── Exercise 7a: Add configuration below this line ──
 
 
 
+// ── End of Exercise 7a ──
+
+let hanaConn = null;
+
+module.exports = class CatalogService extends cds.ApplicationService {
+
+    async init() {
+
+        // ── Exercise 7b: Add the HANA connection block below this line ──
 
 
 
+        // ── Exercise 7c: Add the askQuestion handler below this line ──
 
 
 
+        return super.init();
+    }
+};
 
 
 /* ═══════════════════════════════════════════════════════════════

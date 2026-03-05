@@ -353,15 +353,18 @@ Notice that the Products projection from Exercise 2 is unchanged. You added two 
 
 In CAP, a `.cds` service definition declares the contract (what the API looks like), and a `.js` file with the same name implements the behavior (what happens when someone calls the API). CAP automatically pairs them by filename -- `catalog-service.cds` and `catalog-service.js`.
 
-Open `srv/catalog-service.js`. You will see that the helper functions (`connectToHana`, `hanaExec`, `extractField`, `buildPrompt`) are already provided at the bottom of the file with comments explaining what they do. You only need to add the imports, configuration, and service class above them.
+Open `srv/catalog-service.js`. The file already contains:
 
-### 7a. Imports and configuration
+- The **class skeleton** -- the `CatalogService` class, `init()` method, and `return super.init()` are structured for you. You just need to fill in the logic at the marked locations.
+- The **helper functions** (`connectToHana`, `hanaExec`, `extractField`, `buildPrompt`) at the bottom, with comments explaining what they do.
 
-Add the following at the top of the file (below the existing comment):
+You need to add three things: the configuration (7a), the HANA connection block (7b), and the askQuestion handler (7c).
+
+### 7a. Configuration
+
+Add the following below the `Exercise 7a` comment at the top of the file:
 
 ```js
-const cds = require('@sap/cds');
-
 const {
     embeddingModel: EMBEDDING_MODEL,
     llmModel:       LLM_MODEL,
@@ -369,19 +372,15 @@ const {
     topK:           TOP_K,
     vectorTable:    VECTOR_TABLE,
 } = require('../config');
-
-let hanaConn = null;
 ```
 
-Same libraries as the embedding script. The config adds two new values: `LLM_MODEL` (for the chat model) and `TOP_K` (how many results to retrieve from the vector search). The `hanaConn` variable holds the HANA connection at module scope so it persists across HTTP requests. Note that `path`, `fs`, and `hana` are already imported by the pre-provided helper functions at the bottom of the file.
+These config values come from the shared `config.js` file: `LLM_MODEL` (for the chat model), `EMBEDDING_MODEL` (for generating query embeddings), `TOP_K` (how many results to retrieve from the vector search), and `VECTOR_TABLE` (the HANA table name). The `cds` import and `hanaConn` variable are already in the skeleton. Note that `path`, `fs`, and `hana` are already imported by the helper functions at the bottom of the file.
 
-### 7b. Service class with startup logic
+### 7b. HANA connection on startup
+
+Add the following below the `Exercise 7b` comment, inside `init()`:
 
 ```js
-module.exports = class CatalogService extends cds.ApplicationService {
-
-    async init() {
-        // Connect to HANA once the server is ready
         cds.on('served', async () => {
             try {
                 hanaConn = await connectToHana();
@@ -392,14 +391,13 @@ module.exports = class CatalogService extends cds.ApplicationService {
         });
 ```
 
-The class extends `cds.ApplicationService`, which is the base class for all CAP service handlers. The `init()` method is called once when the service starts. Inside it, `cds.on('served')` registers a callback that fires after all services are up and the HTTP server is listening. This is where we establish the HANA connection that will be reused for every incoming request.
+`cds.on('served')` registers a callback that fires after all services are up and the HTTP server is listening. This is where we establish the HANA connection that will be reused for every incoming request.
 
 ### 7c. The askQuestion handler -- the RAG pipeline
 
-Add this directly below the startup block, still inside `init()`:
+Add the following below the `Exercise 7c` comment, inside `init()`:
 
 ```js
-        // Register the askQuestion action handler
         this.on('askQuestion', async (req) => {
             const { question } = req.data;
             if (!hanaConn) return req.error(503, 'HANA connection not ready');
@@ -440,10 +438,6 @@ Add this directly below the startup block, still inside `init()`:
 
             return { answer, sources };
         });
-
-        return super.init();
-    }
-};
 ```
 
 These are the same four RAG steps from the notebook:
