@@ -1,0 +1,536 @@
+<!DOCTYPE html><html><head>
+      <title>EXERCISE</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+      <link rel="stylesheet" href="file:////Users/ESSJ/.vscode/extensions/shd101wyy.markdown-preview-enhanced-0.8.20/crossnote/dependencies/katex/katex.min.css">
+      
+      
+      
+      
+      
+      <style>
+      code[class*=language-],pre[class*=language-]{color:#333;background:0 0;font-family:Consolas,"Liberation Mono",Menlo,Courier,monospace;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.4;-moz-tab-size:8;-o-tab-size:8;tab-size:8;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none}pre[class*=language-]{padding:.8em;overflow:auto;border-radius:3px;background:#f5f5f5}:not(pre)>code[class*=language-]{padding:.1em;border-radius:.3em;white-space:normal;background:#f5f5f5}.token.blockquote,.token.comment{color:#969896}.token.cdata{color:#183691}.token.doctype,.token.macro.property,.token.punctuation,.token.variable{color:#333}.token.builtin,.token.important,.token.keyword,.token.operator,.token.rule{color:#a71d5d}.token.attr-value,.token.regex,.token.string,.token.url{color:#183691}.token.atrule,.token.boolean,.token.code,.token.command,.token.constant,.token.entity,.token.number,.token.property,.token.symbol{color:#0086b3}.token.prolog,.token.selector,.token.tag{color:#63a35c}.token.attr-name,.token.class,.token.class-name,.token.function,.token.id,.token.namespace,.token.pseudo-class,.token.pseudo-element,.token.url-reference .token.variable{color:#795da3}.token.entity{cursor:help}.token.title,.token.title .token.punctuation{font-weight:700;color:#1d3e81}.token.list{color:#ed6a43}.token.inserted{background-color:#eaffea;color:#55a532}.token.deleted{background-color:#ffecec;color:#bd2c00}.token.bold{font-weight:700}.token.italic{font-style:italic}.language-json .token.property{color:#183691}.language-markup .token.tag .token.punctuation{color:#333}.language-css .token.function,code.language-css{color:#0086b3}.language-yaml .token.atrule{color:#63a35c}code.language-yaml{color:#183691}.language-ruby .token.function{color:#333}.language-markdown .token.url{color:#795da3}.language-makefile .token.symbol{color:#795da3}.language-makefile .token.variable{color:#183691}.language-makefile .token.builtin{color:#0086b3}.language-bash .token.keyword{color:#0086b3}pre[data-line]{position:relative;padding:1em 0 1em 3em}pre[data-line] .line-highlight-wrapper{position:absolute;top:0;left:0;background-color:transparent;display:block;width:100%}pre[data-line] .line-highlight{position:absolute;left:0;right:0;padding:inherit 0;margin-top:1em;background:hsla(24,20%,50%,.08);background:linear-gradient(to right,hsla(24,20%,50%,.1) 70%,hsla(24,20%,50%,0));pointer-events:none;line-height:inherit;white-space:pre}pre[data-line] .line-highlight:before,pre[data-line] .line-highlight[data-end]:after{content:attr(data-start);position:absolute;top:.4em;left:.6em;min-width:1em;padding:0 .5em;background-color:hsla(24,20%,50%,.4);color:#f4f1ef;font:bold 65%/1.5 sans-serif;text-align:center;vertical-align:.3em;border-radius:999px;text-shadow:none;box-shadow:0 1px #fff}pre[data-line] .line-highlight[data-end]:after{content:attr(data-end);top:auto;bottom:.4em}html body{font-family:'Helvetica Neue',Helvetica,'Segoe UI',Arial,freesans,sans-serif;font-size:16px;line-height:1.6;color:#333;background-color:#fff;overflow:initial;box-sizing:border-box;word-wrap:break-word}html body>:first-child{margin-top:0}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{line-height:1.2;margin-top:1em;margin-bottom:16px;color:#000}html body h1{font-size:2.25em;font-weight:300;padding-bottom:.3em}html body h2{font-size:1.75em;font-weight:400;padding-bottom:.3em}html body h3{font-size:1.5em;font-weight:500}html body h4{font-size:1.25em;font-weight:600}html body h5{font-size:1.1em;font-weight:600}html body h6{font-size:1em;font-weight:600}html body h1,html body h2,html body h3,html body h4,html body h5{font-weight:600}html body h5{font-size:1em}html body h6{color:#5c5c5c}html body strong{color:#000}html body del{color:#5c5c5c}html body a:not([href]){color:inherit;text-decoration:none}html body a{color:#08c;text-decoration:none}html body a:hover{color:#00a3f5;text-decoration:none}html body img{max-width:100%}html body>p{margin-top:0;margin-bottom:16px;word-wrap:break-word}html body>ol,html body>ul{margin-bottom:16px}html body ol,html body ul{padding-left:2em}html body ol.no-list,html body ul.no-list{padding:0;list-style-type:none}html body ol ol,html body ol ul,html body ul ol,html body ul ul{margin-top:0;margin-bottom:0}html body li{margin-bottom:0}html body li.task-list-item{list-style:none}html body li>p{margin-top:0;margin-bottom:0}html body .task-list-item-checkbox{margin:0 .2em .25em -1.8em;vertical-align:middle}html body .task-list-item-checkbox:hover{cursor:pointer}html body blockquote{margin:16px 0;font-size:inherit;padding:0 15px;color:#5c5c5c;background-color:#f0f0f0;border-left:4px solid #d6d6d6}html body blockquote>:first-child{margin-top:0}html body blockquote>:last-child{margin-bottom:0}html body hr{height:4px;margin:32px 0;background-color:#d6d6d6;border:0 none}html body table{margin:10px 0 15px 0;border-collapse:collapse;border-spacing:0;display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}html body table th{font-weight:700;color:#000}html body table td,html body table th{border:1px solid #d6d6d6;padding:6px 13px}html body dl{padding:0}html body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:700}html body dl dd{padding:0 16px;margin-bottom:16px}html body code{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;font-size:.85em;color:#000;background-color:#f0f0f0;border-radius:3px;padding:.2em 0}html body code::after,html body code::before{letter-spacing:-.2em;content:'\00a0'}html body pre>code{padding:0;margin:0;word-break:normal;white-space:pre;background:0 0;border:0}html body .highlight{margin-bottom:16px}html body .highlight pre,html body pre{padding:1em;overflow:auto;line-height:1.45;border:#d6d6d6;border-radius:3px}html body .highlight pre{margin-bottom:0;word-break:normal}html body pre code,html body pre tt{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}html body pre code:after,html body pre code:before,html body pre tt:after,html body pre tt:before{content:normal}html body blockquote,html body dl,html body ol,html body p,html body pre,html body ul{margin-top:0;margin-bottom:16px}html body kbd{color:#000;border:1px solid #d6d6d6;border-bottom:2px solid #c7c7c7;padding:2px 4px;background-color:#f0f0f0;border-radius:3px}@media print{html body{background-color:#fff}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#000;page-break-after:avoid}html body blockquote{color:#5c5c5c}html body pre{page-break-inside:avoid}html body table{display:table}html body img{display:block;max-width:100%;max-height:100%}html body code,html body pre{word-wrap:break-word;white-space:pre}}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview ul{list-style:disc}.markdown-preview ul ul{list-style:circle}.markdown-preview ul ul ul{list-style:square}.markdown-preview ol{list-style:decimal}.markdown-preview ol ol,.markdown-preview ul ol{list-style-type:lower-roman}.markdown-preview ol ol ol,.markdown-preview ol ul ol,.markdown-preview ul ol ol,.markdown-preview ul ul ol{list-style-type:lower-alpha}.markdown-preview .newpage,.markdown-preview .pagebreak{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center!important}.markdown-preview:not([data-for=preview]) .code-chunk .code-chunk-btn-group{display:none}.markdown-preview:not([data-for=preview]) .code-chunk .status{display:none}.markdown-preview:not([data-for=preview]) .code-chunk .output-div{margin-bottom:16px}.markdown-preview .md-toc{padding:0}.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link{display:inline;padding:.25rem 0}.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link div,.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link p{display:inline}.markdown-preview .md-toc .md-toc-link-wrapper.highlighted .md-toc-link{font-weight:800}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,.66);border:4px solid rgba(150,150,150,.66);background-clip:content-box}html body[for=html-export]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0;min-height:100vh}@media screen and (min-width:914px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px + 2em)}}@media screen and (max-width:914px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{font-size:14px!important;padding:1em}}@media print{html body[for=html-export]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for=html-export]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,.66);border:4px solid rgba(150,150,150,.66);background-clip:content-box}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc{padding:0 16px}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link{display:inline;padding:.25rem 0}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link div,html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link p{display:inline}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper.highlighted .md-toc-link{font-weight:800}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% - 300px);padding:2em calc(50% - 457px - 300px / 2);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for=html-export]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for=html-export]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
+/* Please visit the URL below for more information: */
+/*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
+
+      </style>
+      <!-- The content below will be included at the end of the <head> element. --><script type="text/javascript">
+  document.addEventListener("DOMContentLoaded", function () {
+    // your code here
+  });
+</script></head><body for="html-export">
+    
+    
+      <div class="crossnote markdown-preview  ">
+      
+<h1 id="building-a-rag-api-with-sap-cap">Building a RAG API with SAP CAP </h1>
+<p>In the previous exercise you built a RAG pipeline in a Jupyter notebook: you loaded product data, generated vector embeddings, stored them in SAP HANA Cloud, and used similarity search to give an LLM the context it needs to answer questions accurately.</p>
+<p>In this exercise you will rebuild that same pipeline as a proper application using <strong>SAP Cloud Application Programming Model (CAP)</strong>. CAP is a framework for building enterprise-grade services on SAP Business Technology Platform. It uses a declarative language called <strong>CDS</strong> (Core Data Services) to define data models and service APIs, and Node.js (or Java) for the runtime logic.</p>
+<p>By the end of this exercise you will have a running REST API that:</p>
+<ul>
+<li>Serves product data through a standard OData endpoint.</li>
+<li>Accepts a natural-language question, runs it through the RAG pipeline, and returns an answer with source citations.</li>
+</ul>
+<hr>
+<h2 id="prerequisites">Prerequisites </h2>
+<ul>
+<li>Node.js 18 or later installed.</li>
+<li>The <code>@sap/cds-dk</code> CLI installed globally (<code>npm i -g @sap/cds-dk</code>).</li>
+<li>The REST Client extension for VS Code (for sending test requests).</li>
+<li>You have completed the RAG notebook exercise.</li>
+</ul>
+<hr>
+<h2 id="setup">Setup </h2>
+<p>Before starting the exercises, you need to configure credentials and set your username.</p>
+<h3 id="1-copy-credentials">1. Copy credentials </h3>
+<p>You received two credential files from the workshop organizers. Copy their contents into the corresponding files inside <code>cap-app-exercise/</code>:</p>
+<table>
+<thead>
+<tr>
+<th>Source file (from organizers)</th>
+<th>Target file in <code>cap-app-exercise/</code></th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>default-env.json</code></td>
+<td><code>default-env.json</code></td>
+<td>SAP AI Core credentials (for calling the LLM and embedding model)</td>
+</tr>
+<tr>
+<td><code>env_cloud.json</code></td>
+<td><code>env_cloud.json</code></td>
+<td>SAP HANA Cloud credentials (for the vector database)</td>
+</tr>
+</tbody>
+</table>
+<p>Open each target file and replace the placeholder values with the real credentials.</p>
+<h3 id="2-set-your-username">2. Set your username </h3>
+<p>Open <code>config.js</code> and change the <code>userName</code> value from <code>'change_me'</code> to something unique, for example your Equinor username:</p>
+<pre data-role="codeBlock" data-info="js" class="language-javascript js"><code><span class="token keyword keyword-const">const</span> userName <span class="token operator">=</span> <span class="token string">'abcd'</span><span class="token punctuation">;</span>
+</code></pre><p>This username is appended to the HANA vector table name so that each participant gets their own table and does not overwrite anyone else's data.</p>
+<hr>
+<h2 id="exercise-1-define-the-database-schema">Exercise 1: Define the Database Schema </h2>
+<p><strong>File:</strong> <code>db/schema.cds</code></p>
+<p>In CAP, the database schema is defined using CDS (Core Data Services). A <code>.cds</code> file describes your data model in a declarative way -- you define entities (which become database tables) and their fields, and CAP handles creating the actual tables for you.</p>
+<p>Key concepts:</p>
+<ul>
+<li><strong>Namespace:</strong> Groups related entities under a common prefix, similar to a package name. It prevents naming collisions when multiple modules are combined.</li>
+<li><strong>Entity:</strong> Equivalent to a database table. Each entity has a set of typed fields.</li>
+<li><strong><code>key</code> field:</strong> Marks the primary key of the entity, just like a primary key in SQL.</li>
+<li><strong>Type annotations:</strong> CDS types like <code>String(255)</code>, <code>Integer</code>, and <code>Decimal(10, 2)</code> map directly to SQL column types.</li>
+</ul>
+<p>Replace the contents of <code>db/schema.cds</code> with the following:</p>
+<pre data-role="codeBlock" data-info="cds" class="language-cds cds"><code>namespace edc.rag;
+
+entity Products {
+    key ID              : String(10);
+        productName     : String(255);
+        category        : String(100);
+        description     : String(5000);
+        unitPrice       : Decimal(10, 2);
+        supplierID      : String(10);
+        supplierName    : String(255);
+        leadTimeDays    : Integer;
+        minOrder        : Integer;
+        currency        : String(10);
+        supplierCountry : String(100);
+        supplierAddress : String(500);
+        status          : String(50);
+        supplierCity    : String(100);
+        stockQuantity   : Integer;
+        manufacturer    : String(255);
+        cityLat         : Decimal(10, 7);
+        cityLong        : Decimal(10, 7);
+        rating          : Integer;
+}
+</code></pre><p>This defines a <code>Products</code> entity under the <code>edc.rag</code> namespace. The fields match the columns from the product catalog CSV you worked with in the notebook. When CAP deploys this schema, it creates a table with exactly these columns.</p>
+<hr>
+<h2 id="exercise-2-expose-products-as-a-service">Exercise 2: Expose Products as a Service </h2>
+<p><strong>File:</strong> <code>srv/catalog-service.cds</code></p>
+<p>A CDS entity by itself is just a table definition -- it is not accessible over HTTP. To expose it as a REST API endpoint, you need to define a <strong>service</strong>. A CDS service is a named group of entities and operations that CAP exposes as an OData (or REST) API.</p>
+<p>Key concepts:</p>
+<ul>
+<li><strong><code>using ... from</code>:</strong> Imports an entity from another CDS file, similar to an import statement.</li>
+<li><strong><code>service ... @(path: '...')</code>:</strong> Declares a service and sets its URL path. Everything inside the service block becomes part of that API.</li>
+<li><strong><code>entity ... as projection on</code>:</strong> Exposes an existing database entity through the service. A projection lets you control which fields are visible and whether the entity is read-only or read-write. It does not duplicate data -- it is a view over the underlying table.</li>
+<li><strong><code>@readonly</code>:</strong> An annotation that restricts the entity to read-only access (GET requests only). Clients cannot create, update, or delete records through this endpoint.</li>
+</ul>
+<p>Replace the contents of <code>srv/catalog-service.cds</code> with:</p>
+<pre data-role="codeBlock" data-info="cds" class="language-cds cds"><code>using edc.rag from '../db/schema';
+
+service CatalogService @(path: '/api') {
+
+    @readonly
+    entity Products as projection on rag.Products;
+}
+</code></pre><p>This creates a service called <code>CatalogService</code> accessible at <code>/api</code>. It exposes the Products entity as a read-only endpoint at <code>/api/Products</code>. CAP automatically provides OData query capabilities -- filtering, sorting, pagination -- with no additional code.</p>
+<hr>
+<h2 id="exercise-3-verify-the-data-layer">Exercise 3: Verify the Data Layer </h2>
+<p><strong>What this step covers:</strong> Understanding how CAP loads seed data, and verifying that exercises 1 and 2 work.</p>
+<p>Look inside the <code>db/data/</code> folder. You will see a file named <code>edc.rag-Products.csv</code>. This file is already provided for you.</p>
+<p>CAP has a convention for loading seed data: if a CSV file in <code>db/data/</code> is named <code>&lt;namespace&gt;-&lt;Entity&gt;.csv</code> (using the full namespace with dots replaced by dots and hyphens separating the entity name), CAP automatically loads that data into the corresponding table during deployment. In this case:</p>
+<ul>
+<li>Namespace: <code>edc.rag</code></li>
+<li>Entity: <code>Products</code></li>
+<li>Expected filename: <code>edc.rag-Products.csv</code></li>
+</ul>
+<p>This is the same product catalog you used in the notebook -- 75 IT accessories with names, prices, suppliers, ratings, and other attributes. The format is standard CSV (comma-delimited), with column names matching the entity field names from <code>schema.cds</code>.</p>
+<h3 id="test-it">Test it </h3>
+<p>Run the following from the <code>cap-app-exercise/</code> directory:</p>
+<pre data-role="codeBlock" data-info="bash" class="language-bash bash"><code><span class="token function">npm</span> <span class="token function">install</span>              <span class="token comment"># Install dependencies</span>
+cds deploy <span class="token parameter variable">--to</span> sqlite   <span class="token comment"># Deploy schema and load seed data into SQLite</span>
+cds <span class="token function">watch</span>                <span class="token comment"># Start the development server</span>
+</code></pre><p><code>npm install</code> downloads all dependencies defined in <code>package.json</code>.</p>
+<p><code>cds deploy --to sqlite</code> deploys the CDS schema to a persistent SQLite file (<code>db.sqlite</code>) and loads the CSV seed data into it.</p>
+<p><code>cds watch</code> starts a local HTTP server on port 4004 that watches for file changes and restarts automatically.</p>
+<p>Open your browser and navigate to:</p>
+<ul>
+<li><a href="http://localhost:4004">http://localhost:4004</a> -- The CAP welcome page, listing available services.</li>
+<li><a href="http://localhost:4004/api/Products">http://localhost:4004/api/Products</a> -- The Products endpoint, returning all 75 products as JSON.</li>
+</ul>
+<p>If you see the product data, your schema, service definition, and seed data are all working correctly. Stop the server with <code>Ctrl+C</code> before continuing.</p>
+<hr>
+<h2 id="exercise-4-create-the-embedding-script">Exercise 4: Create the Embedding Script </h2>
+<p><strong>File:</strong> <code>scripts/generate-embeddings.js</code></p>
+<p>In the notebook you used Python with langchain and hdbcli to generate embeddings and store them in HANA Cloud. This script does the same thing in Node.js, using the SAP AI SDK and SAP HANA client library.</p>
+<p>The script runs as part of the <code>npm run deploy</code> command. If you look at <code>package.json</code>, you will see:</p>
+<pre data-role="codeBlock" data-info="json" class="language-json json"><code><span class="token property">"deploy"</span><span class="token operator">:</span> <span class="token string">"cds deploy --to sqlite &amp;&amp; node scripts/generate-embeddings.js"</span>
+</code></pre><p>This means <code>npm run deploy</code> first deploys the CDS schema to the persistent SQLite file, then runs our embedding script which reads the products and stores their vector embeddings in HANA Cloud. In a real-world scenario we would probably not do this from a script, but instead include logic to ensure up-to-date embeddings at all times.</p>
+<p>Open <code>scripts/generate-embeddings.js</code>. You will see that the helper functions (<code>connectToHana</code>, <code>hanaExec</code>, <code>productToText</code>) are already provided at the bottom of the file with comments explaining what they do. You only need to add the imports, configuration, and main function above them.</p>
+<h3 id="4a-imports-and-configuration">4a. Imports and configuration </h3>
+<p>Add the following at the top of the file (below the existing comment):</p>
+<pre data-role="codeBlock" data-info="js" class="language-javascript js"><code><span class="token keyword keyword-const">const</span> path <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'path'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword keyword-const">const</span> fs   <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'fs'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword keyword-const">const</span> hana <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'@sap/hana-client'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// CDS must be started from the project root to find package.json</span>
+process<span class="token punctuation">.</span><span class="token method function property-access">chdir</span><span class="token punctuation">(</span>path<span class="token punctuation">.</span><span class="token method function property-access">join</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">,</span> <span class="token string">'..'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword keyword-const">const</span> cds <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'@sap/cds'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword keyword-const">const</span> <span class="token punctuation">{</span> <span class="token maybe-class-name">AzureOpenAiEmbeddingClient</span> <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'@sap-ai-sdk/foundation-models'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword keyword-const">const</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">embeddingModel</span><span class="token operator">:</span>     <span class="token constant">EMBEDDING_MODEL</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">resourceGroup</span><span class="token operator">:</span>      <span class="token constant">RESOURCE_GROUP</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">embeddingBatchSize</span><span class="token operator">:</span> <span class="token constant">BATCH</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">vectorTable</span><span class="token operator">:</span>        <span class="token constant">VECTOR_TABLE</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'../config'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre><p><code>@sap/hana-client</code> is the Node.js driver for SAP HANA -- the equivalent of <code>hdbcli</code> from the notebook. <code>@sap-ai-sdk/foundation-models</code> provides the <code>AzureOpenAiEmbeddingClient</code>, which is the equivalent of <code>init_embedding_model()</code> from the notebook. The config values (model name, table name, batch size) come from the shared <code>config.js</code> file.</p>
+<h3 id="4b-main-function---the-indexing-pipeline">4b. Main function -- the indexing pipeline </h3>
+<pre data-role="codeBlock" data-info="js" class="language-javascript js"><code><span class="token keyword keyword-async">async</span> <span class="token keyword keyword-function">function</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 1 -- Read products from SQLite (populated by cds deploy)</span>
+    <span class="token keyword keyword-const">const</span> db <span class="token operator">=</span> <span class="token keyword control-flow keyword-await">await</span> cds<span class="token punctuation">.</span><span class="token property-access">connect</span><span class="token punctuation">.</span><span class="token method function property-access">to</span><span class="token punctuation">(</span><span class="token string">'db'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword keyword-const">const</span> products <span class="token operator">=</span> <span class="token keyword control-flow keyword-await">await</span> db<span class="token punctuation">.</span><span class="token method function property-access">run</span><span class="token punctuation">(</span><span class="token constant">SELECT</span><span class="token punctuation">.</span><span class="token keyword module keyword-from">from</span><span class="token punctuation">(</span><span class="token string">'edc.rag.Products'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">[embed] Loaded </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>products<span class="token punctuation">.</span><span class="token property-access">length</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string"> products from SQLite</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// 2 -- Connect to HANA Cloud</span>
+    <span class="token keyword keyword-const">const</span> conn <span class="token operator">=</span> <span class="token keyword control-flow keyword-await">await</span> <span class="token function">connectToHana</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">[embed] HANA connected. Using table: </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token constant">VECTOR_TABLE</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// 3 -- Drop and recreate the vector table</span>
+    <span class="token keyword control-flow keyword-try">try</span> <span class="token punctuation">{</span> <span class="token keyword control-flow keyword-await">await</span> <span class="token function">hanaExec</span><span class="token punctuation">(</span>conn<span class="token punctuation">,</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">DROP TABLE "</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token constant">VECTOR_TABLE</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">"</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span> <span class="token keyword control-flow keyword-catch">catch</span> <span class="token punctuation">{</span> <span class="token comment">/* ok if table does not exist yet */</span> <span class="token punctuation">}</span>
+    <span class="token keyword control-flow keyword-await">await</span> <span class="token function">hanaExec</span><span class="token punctuation">(</span>conn<span class="token punctuation">,</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">
+        CREATE TABLE "</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token constant">VECTOR_TABLE</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">" (
+            "VEC_TEXT"   NCLOB,
+            "VEC_VECTOR" REAL_VECTOR
+        )
+    </span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// 4 -- Generate embeddings and insert in batches</span>
+    <span class="token keyword keyword-const">const</span> texts <span class="token operator">=</span> products<span class="token punctuation">.</span><span class="token method function property-access">map</span><span class="token punctuation">(</span>productToText<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword keyword-const">const</span> client <span class="token operator">=</span> <span class="token keyword keyword-new">new</span> <span class="token class-name">AzureOpenAiEmbeddingClient</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">modelName</span><span class="token operator">:</span> <span class="token constant">EMBEDDING_MODEL</span><span class="token punctuation">,</span> <span class="token literal-property property">resourceGroup</span><span class="token operator">:</span> <span class="token constant">RESOURCE_GROUP</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword keyword-let">let</span> count <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+
+    <span class="token keyword control-flow keyword-for">for</span> <span class="token punctuation">(</span><span class="token keyword keyword-let">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> texts<span class="token punctuation">.</span><span class="token property-access">length</span><span class="token punctuation">;</span> i <span class="token operator">+=</span> <span class="token constant">BATCH</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword keyword-const">const</span> batch <span class="token operator">=</span> texts<span class="token punctuation">.</span><span class="token method function property-access">slice</span><span class="token punctuation">(</span>i<span class="token punctuation">,</span> i <span class="token operator">+</span> <span class="token constant">BATCH</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword keyword-const">const</span> res   <span class="token operator">=</span> <span class="token keyword control-flow keyword-await">await</span> client<span class="token punctuation">.</span><span class="token method function property-access">run</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">input</span><span class="token operator">:</span> batch <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword keyword-const">const</span> vecs  <span class="token operator">=</span> res<span class="token punctuation">.</span><span class="token method function property-access">getEmbeddings</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token keyword control-flow keyword-for">for</span> <span class="token punctuation">(</span><span class="token keyword keyword-let">let</span> j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> vecs<span class="token punctuation">.</span><span class="token property-access">length</span><span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword keyword-const">const</span> escaped <span class="token operator">=</span> <span class="token known-class-name class-name">String</span><span class="token punctuation">(</span>batch<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token method function property-access">replace</span><span class="token punctuation">(</span><span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">'</span><span class="token regex-delimiter">/</span><span class="token regex-flags">g</span></span><span class="token punctuation">,</span> <span class="token string">"''"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword control-flow keyword-await">await</span> <span class="token function">hanaExec</span><span class="token punctuation">(</span>conn<span class="token punctuation">,</span>
+                <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">INSERT INTO "</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token constant">VECTOR_TABLE</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">" ("VEC_TEXT", "VEC_VECTOR")
+                 VALUES ('</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>escaped<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">', TO_REAL_VECTOR('</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token known-class-name class-name">JSON</span><span class="token punctuation">.</span><span class="token method function property-access">stringify</span><span class="token punctuation">(</span>vecs<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">'))</span><span class="token template-punctuation string">`</span></span>
+            <span class="token punctuation">)</span><span class="token punctuation">;</span>
+            count<span class="token operator">++</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">[embed] Batch </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token known-class-name class-name">Math</span><span class="token punctuation">.</span><span class="token method function property-access">floor</span><span class="token punctuation">(</span>i <span class="token operator">/</span> <span class="token constant">BATCH</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">: </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>count<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">/</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>texts<span class="token punctuation">.</span><span class="token property-access">length</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string"> inserted</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    conn<span class="token punctuation">.</span><span class="token method function property-access">disconnect</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">[embed] Done. </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>count<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string"> embeddings stored in "</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token constant">VECTOR_TABLE</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">"</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token keyword control-flow keyword-catch">catch</span><span class="token punctuation">(</span><span class="token parameter">err</span> <span class="token arrow operator">=&gt;</span> <span class="token punctuation">{</span> <span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">error</span><span class="token punctuation">(</span><span class="token string">'[embed]'</span><span class="token punctuation">,</span> err<span class="token punctuation">.</span><span class="token property-access">message</span><span class="token punctuation">)</span><span class="token punctuation">;</span> process<span class="token punctuation">.</span><span class="token method function property-access">exit</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre><p>This is the core pipeline -- the same four steps from the notebook's indexing section:</p>
+<ol>
+<li><strong>Load data.</strong> Instead of <code>pd.read_csv()</code>, we use CDS to read from the SQLite database that <code>cds deploy</code> populated.</li>
+<li><strong>Connect to HANA Cloud.</strong> Same as <code>hdbcli.dbapi.connect()</code> in the notebook.</li>
+<li><strong>Create the vector table.</strong> The table has two columns: <code>VEC_TEXT</code> (the original product text as a large string) and <code>VEC_VECTOR</code> (the embedding, stored as HANA's native <code>REAL_VECTOR</code> type). <code>TO_REAL_VECTOR()</code> converts a JSON array of numbers into this type.</li>
+<li><strong>Generate and store embeddings.</strong> Products are processed in batches of 25. For each batch, we call the embedding model and insert each resulting vector into HANA.</li>
+</ol>
+<h3 id="notebook-mapping">Notebook mapping </h3>
+<table>
+<thead>
+<tr>
+<th>Notebook step</th>
+<th>Script equivalent</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pd.read_csv(...)</code></td>
+<td><code>SELECT.from('edc.rag.Products')</code> via CDS</td>
+</tr>
+<tr>
+<td><code>hdbcli.dbapi.connect(env_cloud)</code></td>
+<td><code>connectToHana()</code></td>
+</tr>
+<tr>
+<td><code>init_embedding_model(...)</code></td>
+<td><code>new AzureOpenAiEmbeddingClient(...)</code></td>
+</tr>
+<tr>
+<td><code>HanaDB.from_documents(...)</code></td>
+<td><code>INSERT ... TO_REAL_VECTOR(...)</code></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="exercise-5-deploy-and-generate-embeddings">Exercise 5: Deploy and Generate Embeddings </h2>
+<p>Now run the deployment:</p>
+<pre data-role="codeBlock" data-info="bash" class="language-bash bash"><code><span class="token function">npm</span> run deploy
+</code></pre><p>This executes two steps:</p>
+<ol>
+<li>
+<p><strong><code>cds deploy --to sqlite</code></strong> -- Creates the SQLite database file, applies the schema, and loads the CSV seed data. You should see output like:</p>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>[cds] - loaded model from 2 file(s):
+  db/schema.cds
+  srv/catalog-service.cds
+/&gt; successfully deployed to db.sqlite
+</code></pre></li>
+<li>
+<p><strong><code>node scripts/generate-embeddings.js</code></strong> -- Connects to HANA Cloud, creates your personal vector table, and generates embeddings for all 75 products. You should see output like:</p>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>[embed] Loaded 75 products from SQLite
+[embed] HANA connected. Using table: PRODUCTS_IT_ACCESSORY_CAP_ABCD
+[embed] Batch 1: 25/75 inserted
+[embed] Batch 2: 50/75 inserted
+[embed] Batch 3: 75/75 inserted
+[embed] Done. 75 embeddings stored in "PRODUCTS_IT_ACCESSORY_CAP_ABCD"
+</code></pre></li>
+</ol>
+<p>If you see errors, check that your credentials in <code>env_cloud.json</code> and <code>default-env.json</code> are correct, and that your <code>config.js</code> username is set.</p>
+<hr>
+<h2 id="exercise-6-add-the-rag-action-to-the-service">Exercise 6: Add the RAG Action to the Service </h2>
+<p><strong>File:</strong> <code>srv/catalog-service.cds</code></p>
+<p>Your service currently only exposes the Products entity for basic reads. Now you will extend it with a custom <strong>action</strong> that accepts a natural-language question and returns a RAG-generated answer.</p>
+<p>Key concepts:</p>
+<ul>
+<li><strong><code>type</code>:</strong> Defines a structured return type, similar to a class or interface. It describes the shape of the data the action will return.</li>
+<li><strong><code>action</code>:</strong> A custom operation exposed as a POST endpoint. Unlike entity reads (which are GET requests), an action performs a specific operation -- in this case, running the RAG pipeline.</li>
+<li><strong><code>array of { ... }</code>:</strong> An inline anonymous type for arrays of structured objects.</li>
+</ul>
+<p>Replace the contents of <code>srv/catalog-service.cds</code> with:</p>
+<pre data-role="codeBlock" data-info="cds" class="language-cds cds"><code>using edc.rag from '../db/schema';
+
+service CatalogService @(path: '/api') {
+
+    @readonly
+    entity Products as projection on rag.Products;
+
+    // RAG query
+    type RAGResponse {
+        answer  : LargeString;
+        sources : array of {
+            productID   : String;
+            productName : String;
+            score       : Double;
+        };
+    }
+
+    action askQuestion(question: String) returns RAGResponse;
+}
+</code></pre><p>Notice that the Products projection from Exercise 2 is unchanged. You added two things:</p>
+<ol>
+<li>
+<p><strong><code>RAGResponse</code> type</strong> -- The return type for the RAG action. It contains:</p>
+<ul>
+<li><code>answer</code>: The LLM-generated text response (using <code>LargeString</code> because answers can be long).</li>
+<li><code>sources</code>: An array of the products that the vector search found most relevant, each with a relevance score.</li>
+</ul>
+</li>
+<li>
+<p><strong><code>askQuestion</code> action</strong> -- Takes a <code>question</code> string as input and returns a <code>RAGResponse</code>. CAP will expose this as <code>POST /api/askQuestion</code>.</p>
+</li>
+</ol>
+<hr>
+<h2 id="exercise-7-implement-the-service-handler">Exercise 7: Implement the Service Handler </h2>
+<p><strong>File:</strong> <code>srv/catalog-service.js</code></p>
+<p>In CAP, a <code>.cds</code> service definition declares the contract (what the API looks like), and a <code>.js</code> file with the same name implements the behavior (what happens when someone calls the API). CAP automatically pairs them by filename -- <code>catalog-service.cds</code> and <code>catalog-service.js</code>.</p>
+<p>Open <code>srv/catalog-service.js</code>. The file already contains:</p>
+<ul>
+<li>The <strong>class skeleton</strong> -- the <code>CatalogService</code> class, <code>init()</code> method, and <code>return super.init()</code> are structured for you. You just need to fill in the logic at the marked locations.</li>
+<li>The <strong>helper functions</strong> (<code>connectToHana</code>, <code>hanaExec</code>, <code>extractField</code>, <code>buildPrompt</code>) at the bottom, with comments explaining what they do.</li>
+</ul>
+<p>You need to add three things: the configuration (7a), the HANA connection block (7b), and the askQuestion handler (7c).</p>
+<h3 id="7a-configuration">7a. Configuration </h3>
+<p>Add the following below the <code>Exercise 7a</code> comment at the top of the file:</p>
+<pre data-role="codeBlock" data-info="js" class="language-javascript js"><code><span class="token keyword keyword-const">const</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">embeddingModel</span><span class="token operator">:</span> <span class="token constant">EMBEDDING_MODEL</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">llmModel</span><span class="token operator">:</span>       <span class="token constant">LLM_MODEL</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">resourceGroup</span><span class="token operator">:</span>  <span class="token constant">RESOURCE_GROUP</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">topK</span><span class="token operator">:</span>           <span class="token constant">TOP_K</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">vectorTable</span><span class="token operator">:</span>    <span class="token constant">VECTOR_TABLE</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'../config'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre><p>These config values come from the shared <code>config.js</code> file: <code>LLM_MODEL</code> (for the chat model), <code>EMBEDDING_MODEL</code> (for generating query embeddings), <code>TOP_K</code> (how many results to retrieve from the vector search), and <code>VECTOR_TABLE</code> (the HANA table name). The <code>cds</code> import and <code>hanaConn</code> variable are already in the skeleton. Note that <code>path</code>, <code>fs</code>, and <code>hana</code> are already imported by the helper functions at the bottom of the file.</p>
+<h3 id="7b-hana-connection-on-startup">7b. HANA connection on startup </h3>
+<p>Add the following below the <code>Exercise 7b</code> comment, inside <code>init()</code>:</p>
+<pre data-role="codeBlock" data-info="js" class="language-javascript js"><code>        cds<span class="token punctuation">.</span><span class="token method function property-access">on</span><span class="token punctuation">(</span><span class="token string">'served'</span><span class="token punctuation">,</span> <span class="token keyword keyword-async">async</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token arrow operator">=&gt;</span> <span class="token punctuation">{</span>
+            <span class="token keyword control-flow keyword-try">try</span> <span class="token punctuation">{</span>
+                hanaConn <span class="token operator">=</span> <span class="token keyword control-flow keyword-await">await</span> <span class="token function">connectToHana</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span><span class="token string">'[rag] HANA Cloud connected'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span> <span class="token keyword control-flow keyword-catch">catch</span> <span class="token punctuation">(</span>err<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">error</span><span class="token punctuation">(</span><span class="token string">'[rag] Could not connect to HANA:'</span><span class="token punctuation">,</span> err<span class="token punctuation">.</span><span class="token property-access">message</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre><p><code>cds.on('served')</code> registers a callback that fires after all services are up and the HTTP server is listening. This is where we establish the HANA connection that will be reused for every incoming request.</p>
+<h3 id="7c-the-askquestion-handler---the-rag-pipeline">7c. The askQuestion handler -- the RAG pipeline </h3>
+<p>Add the following below the <code>Exercise 7c</code> comment, inside <code>init()</code>:</p>
+<pre data-role="codeBlock" data-info="js" class="language-javascript js"><code>        <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span><span class="token method function property-access">on</span><span class="token punctuation">(</span><span class="token string">'askQuestion'</span><span class="token punctuation">,</span> <span class="token keyword keyword-async">async</span> <span class="token punctuation">(</span><span class="token parameter">req</span><span class="token punctuation">)</span> <span class="token arrow operator">=&gt;</span> <span class="token punctuation">{</span>
+            <span class="token keyword keyword-const">const</span> <span class="token punctuation">{</span> question <span class="token punctuation">}</span> <span class="token operator">=</span> req<span class="token punctuation">.</span><span class="token property-access">data</span><span class="token punctuation">;</span>
+            <span class="token keyword control-flow keyword-if">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>hanaConn<span class="token punctuation">)</span> <span class="token keyword control-flow keyword-return">return</span> req<span class="token punctuation">.</span><span class="token method function property-access">error</span><span class="token punctuation">(</span><span class="token number">503</span><span class="token punctuation">,</span> <span class="token string">'HANA connection not ready'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            <span class="token keyword keyword-const">const</span> <span class="token punctuation">{</span> <span class="token maybe-class-name">AzureOpenAiEmbeddingClient</span><span class="token punctuation">,</span> <span class="token maybe-class-name">AzureOpenAiChatClient</span> <span class="token punctuation">}</span> <span class="token operator">=</span>
+                <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'@sap-ai-sdk/foundation-models'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            <span class="token comment">// Step 1 -- Embed the question</span>
+            <span class="token keyword keyword-const">const</span> embeddingClient <span class="token operator">=</span> <span class="token keyword keyword-new">new</span> <span class="token class-name">AzureOpenAiEmbeddingClient</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">modelName</span><span class="token operator">:</span> <span class="token constant">EMBEDDING_MODEL</span><span class="token punctuation">,</span> <span class="token literal-property property">resourceGroup</span><span class="token operator">:</span> <span class="token constant">RESOURCE_GROUP</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword keyword-const">const</span> embRes <span class="token operator">=</span> <span class="token keyword control-flow keyword-await">await</span> embeddingClient<span class="token punctuation">.</span><span class="token method function property-access">run</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">input</span><span class="token operator">:</span> <span class="token punctuation">[</span>question<span class="token punctuation">]</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword keyword-const">const</span> queryVector <span class="token operator">=</span> embRes<span class="token punctuation">.</span><span class="token method function property-access">getEmbedding</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            <span class="token comment">// Step 2 -- Vector similarity search in HANA Cloud</span>
+            <span class="token keyword keyword-const">const</span> sql <span class="token operator">=</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">SELECT TOP </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token constant">TOP_K</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">
+                    "VEC_TEXT",
+                    COSINE_SIMILARITY("VEC_VECTOR", TO_REAL_VECTOR('</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token known-class-name class-name">JSON</span><span class="token punctuation">.</span><span class="token method function property-access">stringify</span><span class="token punctuation">(</span>queryVector<span class="token punctuation">)</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">')) AS "SCORE"
+                FROM "</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token constant">VECTOR_TABLE</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">"
+                ORDER BY COSINE_SIMILARITY("VEC_VECTOR", TO_REAL_VECTOR('</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token known-class-name class-name">JSON</span><span class="token punctuation">.</span><span class="token method function property-access">stringify</span><span class="token punctuation">(</span>queryVector<span class="token punctuation">)</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">')) DESC</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">;</span>
+
+            <span class="token keyword keyword-const">const</span> rows <span class="token operator">=</span> <span class="token keyword control-flow keyword-await">await</span> <span class="token function">hanaExec</span><span class="token punctuation">(</span>hanaConn<span class="token punctuation">,</span> sql<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            <span class="token comment">// Step 3 -- Build context from retrieved documents</span>
+            <span class="token keyword keyword-const">const</span> context <span class="token operator">=</span> rows<span class="token punctuation">.</span><span class="token method function property-access">map</span><span class="token punctuation">(</span><span class="token parameter">r</span> <span class="token arrow operator">=&gt;</span> r<span class="token punctuation">.</span><span class="token constant">VEC_TEXT</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token method function property-access">join</span><span class="token punctuation">(</span><span class="token string">'\n\n'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            <span class="token comment">// Step 4 -- Call the LLM with the augmented prompt</span>
+            <span class="token keyword keyword-const">const</span> chatClient <span class="token operator">=</span> <span class="token keyword keyword-new">new</span> <span class="token class-name">AzureOpenAiChatClient</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">modelName</span><span class="token operator">:</span> <span class="token constant">LLM_MODEL</span><span class="token punctuation">,</span> <span class="token literal-property property">resourceGroup</span><span class="token operator">:</span> <span class="token constant">RESOURCE_GROUP</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword keyword-const">const</span> chatRes <span class="token operator">=</span> <span class="token keyword control-flow keyword-await">await</span> chatClient<span class="token punctuation">.</span><span class="token method function property-access">run</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+                <span class="token literal-property property">messages</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span> <span class="token literal-property property">role</span><span class="token operator">:</span> <span class="token string">'user'</span><span class="token punctuation">,</span> <span class="token literal-property property">content</span><span class="token operator">:</span> <span class="token function">buildPrompt</span><span class="token punctuation">(</span>context<span class="token punctuation">,</span> question<span class="token punctuation">)</span> <span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+                <span class="token literal-property property">max_completion_tokens</span><span class="token operator">:</span> <span class="token number">4096</span><span class="token punctuation">,</span>
+            <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            <span class="token keyword keyword-const">const</span> answer <span class="token operator">=</span> chatRes<span class="token punctuation">.</span><span class="token method function property-access">getContent</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword keyword-const">const</span> sources <span class="token operator">=</span> rows<span class="token punctuation">.</span><span class="token method function property-access">slice</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token method function property-access">map</span><span class="token punctuation">(</span><span class="token parameter">r</span> <span class="token arrow operator">=&gt;</span> <span class="token punctuation">(</span><span class="token punctuation">{</span>
+                <span class="token literal-property property">productID</span><span class="token operator">:</span>   <span class="token function">extractField</span><span class="token punctuation">(</span>r<span class="token punctuation">.</span><span class="token constant">VEC_TEXT</span><span class="token punctuation">,</span> <span class="token string">'PRODUCT_ID'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+                <span class="token literal-property property">productName</span><span class="token operator">:</span> <span class="token function">extractField</span><span class="token punctuation">(</span>r<span class="token punctuation">.</span><span class="token constant">VEC_TEXT</span><span class="token punctuation">,</span> <span class="token string">'PRODUCT_NAME'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+                <span class="token literal-property property">score</span><span class="token operator">:</span>       r<span class="token punctuation">.</span><span class="token constant">SCORE</span><span class="token punctuation">,</span>
+            <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            <span class="token keyword control-flow keyword-return">return</span> <span class="token punctuation">{</span> answer<span class="token punctuation">,</span> sources <span class="token punctuation">}</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre><p>These are the same four RAG steps from the notebook:</p>
+<ol>
+<li><strong>Embed the question.</strong> Convert the user's natural-language question into a vector using the same embedding model that was used to embed the products.</li>
+<li><strong>Vector similarity search.</strong> Run a SQL query against HANA Cloud that computes <code>COSINE_SIMILARITY</code> between the question vector and every product vector, returning the top 25 most similar results.</li>
+<li><strong>Build context.</strong> Concatenate the retrieved product texts into a single context string that the LLM can read.</li>
+<li><strong>Call the LLM.</strong> Send the context and question to the chat model using the same prompt template from the notebook. The LLM generates an answer grounded in the retrieved products.</li>
+</ol>
+<p>The response includes both the LLM's <code>answer</code> and the <code>sources</code> -- the top 10 products from the vector search with their similarity scores, giving transparency into what the retrieval step found.</p>
+<h3 id="notebook-mapping-1">Notebook mapping </h3>
+<table>
+<thead>
+<tr>
+<th>Notebook step</th>
+<th>Handler equivalent</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>init_embedding_model(...)</code></td>
+<td><code>new AzureOpenAiEmbeddingClient(...)</code></td>
+</tr>
+<tr>
+<td><code>embedding_model.embed_query(question)</code></td>
+<td><code>embeddingClient.run({ input: [question] })</code></td>
+</tr>
+<tr>
+<td><code>COSINE_SIMILARITY(...)</code> SQL</td>
+<td>Same SQL via <code>hanaExec()</code></td>
+</tr>
+<tr>
+<td><code>retrieval_chain</code> context building</td>
+<td><code>rows.map(r =&gt; r.VEC_TEXT).join(...)</code></td>
+</tr>
+<tr>
+<td><code>init_llm(...)</code> + <code>chain.invoke(question)</code></td>
+<td><code>new AzureOpenAiChatClient(...)</code> + <code>chatClient.run(...)</code></td>
+</tr>
+<tr>
+<td><code>prompt_template</code></td>
+<td><code>buildPrompt(context, question)</code></td>
+</tr>
+</tbody>
+</table>
+<p>The difference is that here the pipeline runs inside a CAP service, triggered by an HTTP POST request, instead of being called interactively in a notebook cell.</p>
+<hr>
+<h2 id="exercise-8-test-the-application">Exercise 8: Test the Application </h2>
+<p>Start the server:</p>
+<pre data-role="codeBlock" data-info="bash" class="language-bash bash"><code>cds <span class="token function">watch</span>
+</code></pre><p>You should see output confirming that the service is running and the HANA connection is established:</p>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>[cds] - loaded model from 2 file(s):
+  db/schema.cds
+  srv/catalog-service.cds
+
+[cds] - serving CatalogService { path: '/api' }
+
+[cds] - server listening on { url: 'http://localhost:4004' }
+[rag] HANA Cloud connected
+</code></pre><h3 id="test-the-products-endpoint">Test the Products endpoint </h3>
+<p>Open <code>test.http</code> in VS Code. The REST Client extension lets you send HTTP requests directly from the editor by clicking the "Send Request" link above each request block.</p>
+<p>Start with the read-only Products requests at the bottom of the file:</p>
+<ul>
+<li><strong>Browse all products</strong> -- <code>GET /api/Products</code> returns all 75 products.</li>
+<li><strong>Filter keyboards</strong> -- <code>GET /api/Products?$filter=contains(productName,'Keyboard')&amp;$orderby=unitPrice asc</code> returns only keyboards, sorted by price. The <code>$filter</code> and <code>$orderby</code> syntax is OData, which CAP supports out of the box.</li>
+<li><strong>Top 5 highest rated</strong> -- <code>GET /api/Products?$orderby=rating desc&amp;$top=5</code> returns the five highest-rated products.</li>
+</ul>
+<h3 id="test-the-rag-endpoint">Test the RAG endpoint </h3>
+<p>Now try the RAG queries at the top of <code>test.http</code>. These are the same three test cases from the notebook:</p>
+<ol>
+<li><strong>"Find all keyboards with RGB backlighting"</strong> -- Should return multiple keyboards with RGB features.</li>
+<li><strong>"What is the cheapest wireless mouse available? Return only one."</strong> -- Should return the Logitech Signature M650 at 34.75 EUR.</li>
+<li><strong>"Suggest a headset with a rating of 5. Return only one."</strong> -- Should return one of the 5-star headsets.</li>
+</ol>
+<p>Each response contains two parts:</p>
+<ul>
+<li><code>answer</code>: The LLM-generated response -- a JSON array of matching products with all their details.</li>
+<li><code>sources</code>: The top 10 most relevant products from the vector similarity search, with their cosine similarity scores.</li>
+</ul>
+<p>The <code>sources</code> field lets you see which products the vector search retrieved and how relevant they were, giving you transparency into the RAG pipeline's retrieval step.</p>
+<hr>
+<h2 id="summary">Summary </h2>
+<p>You have built a complete RAG application using SAP CAP:</p>
+<table>
+<thead>
+<tr>
+<th>Layer</th>
+<th>File</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Data model</td>
+<td><code>db/schema.cds</code></td>
+<td>Defines the Products table structure</td>
+</tr>
+<tr>
+<td>Seed data</td>
+<td><code>db/data/edc.rag-Products.csv</code></td>
+<td>75 products loaded automatically by CAP</td>
+</tr>
+<tr>
+<td>Service definition</td>
+<td><code>srv/catalog-service.cds</code></td>
+<td>Exposes the REST API with Products endpoint and askQuestion action</td>
+</tr>
+<tr>
+<td>Service handler</td>
+<td><code>srv/catalog-service.js</code></td>
+<td>Implements the RAG pipeline (embed, search, augment, generate)</td>
+</tr>
+<tr>
+<td>Embedding script</td>
+<td><code>scripts/generate-embeddings.js</code></td>
+<td>Converts products to vectors and stores them in HANA Cloud</td>
+</tr>
+<tr>
+<td>Configuration</td>
+<td><code>config.js</code></td>
+<td>Central settings for models, table names, and parameters</td>
+</tr>
+</tbody>
+</table>
+<p>The application follows the same RAG architecture from the notebook -- <strong>indexing</strong> (exercises 4-5) and <strong>retrieval + generation</strong> (exercise 7) -- but packaged as a REST API instead of interactive notebook cells.</p>
+
+      </div>
+      
+      
+    
+    
+    
+    
+    
+    
+  
+    </body></html>
