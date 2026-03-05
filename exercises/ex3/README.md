@@ -28,6 +28,8 @@ in [SAP Business Accelerator Hub](https://api.sap.com/).
 
     <br>![](/exercises/ex3/images/03_01_0010.png)
 
+4. Log on with your SAP user and view the API documentation. Under the API Reference tab you can find the various endpoints including Customer which is the one we will use. 
+
 Note: You can also try the Joule AI assistant to find this API. Try requesting something like: " I am on S/4 private cloud and am looking for an odata API for Business Partner with endpoint Customer". It may or may not work (the assistant is in beta phase and seems to freeze a lot :) )
 
 
