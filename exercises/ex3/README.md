@@ -185,10 +185,21 @@ entity `Passengers` can easily be replaced by the Data Product entity `Customers
 
 
 
-## Exercise 3.6 - Mock
+## Exercise 3.6 - Connect to S/4 for real data
 
 After completing these steps, you will have run the xtravels app with
-the Data Product entity `Customers` being mocked by a local table.
+the API entity `Customers` reading data from the S/4 sandbox system S09.
+1. Odata service in S/4
+   
+
+2. Destination
+   Connection to S/4 is done via the BTP destination service. A destination is an object in BTP specifying the URL for the API + logon info. This destination has already been created.
+   Since you are already using the Business Application Studio for the development you are already logged onto BTP and have access to the destinations in BTP.
+
+   DRAWING OF THE ARCHITECHTURE
+
+2. Project.json
+   You have defined the new service. And now it needs to connect to the destination and the correct odata service in S/4
 
 Following the CAP principle of "local development and testing", you first
 test the xtravels app with the Data Product entities being mocked by local
