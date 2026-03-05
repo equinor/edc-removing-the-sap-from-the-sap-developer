@@ -16,26 +16,19 @@ You will then replace local entity `Passenger` with entity `Customer` from the B
 
 ## Exercise 3.1 - Discovery
 
-After completing these steps, you will have found Data Product "Customer" from S/4
+After completing these steps, you will have found BPI "Business Partner" from S/4
 in [SAP Business Accelerator Hub](https://api.sap.com/).
 
 1. Go to [SAP Business Accelerator Hub](https://api.sap.com/).
 
     <br>![](/exercises/ex3/images/03_01_0010.png)
 
-2. In the top row, go to tab [Data Products](https://api.sap.com/dataproducts).
+2. Select the Product "SAP S/4HANA Cloud Private Edition".
+3. Select APIs and ODATA V2. Search for Business Partner 
 
-    <br>![](/exercises/ex3/images/03_01_0020.png)
+    <br>![](/exercises/ex3/images/03_01_0010.png)
 
-3. Here you can browse the available API's.
-Enter "Business Partner" in the search field and press "Return".
-
-    <br>![](/exercises/ex3/images/03_01_0030.png)
-
-4. Click on the tile for Data Product [Customer](https://api.sap.com/dataproduct/sap-s4com-Customer-v1/overview).
-
-    <br>![](/exercises/ex3/images/03_01_0040.png)
-
+Note: You can also try the Joule AI chat to find this API. Try requesting something like: " I am on S/4 private cloud and am looking for an odata API with endpoint Customer".
 
 
 ## Exercise 3.2 - Download Data Product metadata
