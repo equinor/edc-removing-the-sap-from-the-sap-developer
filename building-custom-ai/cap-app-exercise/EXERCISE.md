@@ -140,20 +140,16 @@ This is the same product catalog you used in the notebook -- 75 IT accessories w
 Run the following from the `cap-app-exercise/` directory:
 
 ```bash
-npm install # Install dependencies
-cds deploy --to sqlite # Deploys seed data to DB
-cds watch # Start server
+npm install              # Install dependencies
+cds deploy --to sqlite   # Deploy schema and load seed data into SQLite
+cds watch                # Start the development server
 ```
 
-`npm install` downloads all dependencies defined in `package.json`. 
+`npm install` downloads all dependencies defined in `package.json`.
 
-`cds deploy --to sqlite` is a command that:
-1. Deploys the CDS schema to an SQLite database.
-2. Loads the CSV seed data into the database.
+`cds deploy --to sqlite` deploys the CDS schema to a persistent SQLite file (`db.sqlite`) and loads the CSV seed data into it.
 
-`cds watch` is a development command that:
-1. Starts a local HTTP server (default: port 4004).
-2. Watches for file changes and restarts automatically.
+`cds watch` starts a local HTTP server on port 4004 that watches for file changes and restarts automatically.
 
 Open your browser and navigate to:
 
@@ -176,172 +172,100 @@ The script runs as part of the `npm run deploy` command. If you look at `package
 "deploy": "cds deploy --to sqlite && node scripts/generate-embeddings.js"
 ```
 
-This means `npm run deploy` executes two steps in sequence:
+This means `npm run deploy` first deploys the CDS schema to the persistent SQLite file, then runs our embedding script which reads the products and stores their vector embeddings in HANA Cloud. In a real-world scenario we would probably not do this from a script, but instead include logic to ensure up-to-date embeddings at all times.
 
-1. `cds deploy --to sqlite` -- Deploys the CDS schema to a persistent SQLite file (`db.sqlite`) and loads the CSV seed data. This is different from `cds watch` which uses an in-memory database. The SQLite file persists between restarts.
-2. `node scripts/generate-embeddings.js` -- Runs our embedding script, which reads the products from SQLite and stores their vector embeddings in HANA Cloud.
+Open `scripts/generate-embeddings.js`. You will see that the helper functions (`connectToHana`, `hanaExec`, `productToText`) are already provided at the bottom of the file with comments explaining what they do. You only need to add the imports, configuration, and main function above them.
 
-Replace the contents of `scripts/generate-embeddings.js` with the following. Read through the comments -- each section maps to a step you already performed in the notebook.
+### 4a. Imports and configuration
+
+Add the following at the top of the file (below the existing comment):
 
 ```js
-/**
- * Embedding generation script.
- *
- * Run via:  npm run deploy
- * Which executes: cds deploy --to sqlite && node scripts/generate-embeddings.js
- *
- * This script:
- *  1. Reads products from the SQLite database (populated by cds deploy)
- *  2. Connects to HANA Cloud
- *  3. Drops + recreates the vector table
- *  4. Generates and inserts embeddings via SAP AI SDK
- */
-
 const path = require('path');
-const fs = require('fs');
+const fs   = require('fs');
 const hana = require('@sap/hana-client');
 
-// Point CDS at the project root before requiring it
+// CDS must be started from the project root to find package.json
 process.chdir(path.join(__dirname, '..'));
 const cds = require('@sap/cds');
 
 const { AzureOpenAiEmbeddingClient } = require('@sap-ai-sdk/foundation-models');
 
-const { embeddingModel: EMBEDDING_MODEL, resourceGroup: RESOURCE_GROUP,
-    embeddingBatchSize: BATCH, vectorTable: VECTOR_TABLE } = require('../config');
+const {
+    embeddingModel:     EMBEDDING_MODEL,
+    resourceGroup:      RESOURCE_GROUP,
+    embeddingBatchSize: BATCH,
+    vectorTable:        VECTOR_TABLE,
+} = require('../config');
+```
 
-/* ── HANA helpers ─────────────────────────────────────────────── */
+`@sap/hana-client` is the Node.js driver for SAP HANA -- the equivalent of `hdbcli` from the notebook. `@sap-ai-sdk/foundation-models` provides the `AzureOpenAiEmbeddingClient`, which is the equivalent of `init_embedding_model()` from the notebook. The config values (model name, table name, batch size) come from the shared `config.js` file.
 
-function loadHanaCredentials() {
-    const envPath = path.join(__dirname, '..', 'env_cloud.json');
-    return JSON.parse(fs.readFileSync(envPath, 'utf-8'));
-}
+### 4b. Main function -- the indexing pipeline
 
-function connectToHana() {
-    return new Promise((resolve, reject) => {
-        const creds = loadHanaCredentials();
-        const conn = hana.createConnection();
-        conn.connect({
-            serverNode: `${creds.url}:${creds.port}`,
-            uid: creds.user,
-            pwd: creds.pwd,
-            encrypt: true,
-            sslValidateCertificate: false,
-        }, (err) => {
-            if (err) reject(err);
-            else resolve(conn);
-        });
-    });
-}
-
-function hanaExec(conn, sql) {
-    return new Promise((resolve, reject) => {
-        conn.exec(sql, (err, rows) => {
-            if (err) reject(err);
-            else resolve(rows || []);
-        });
-    });
-}
-
-/* ── Product text format ──────────────────────────────────────── */
-
-function productToText(p) {
-    return [
-        `PRODUCT_ID: ${p.ID}`,
-        `PRODUCT_NAME: ${p.productName}`,
-        `CATEGORY: ${p.category}`,
-        `DESCRIPTION: ${p.description}`,
-        `UNIT_PRICE: ${p.unitPrice}`,
-        `SUPPLIER_ID: ${p.supplierID}`,
-        `SUPPLIER_NAME: ${p.supplierName}`,
-        `LEAD_TIME_DAYS: ${p.leadTimeDays}`,
-        `MIN_ORDER: ${p.minOrder}`,
-        `CURRENCY: ${p.currency}`,
-        `SUPPLIER_COUNTRY: ${p.supplierCountry}`,
-        `SUPPLIER_ADDRESS: ${p.supplierAddress}`,
-        `STATUS: ${p.status}`,
-        `SUPPLIER_CITY: ${p.supplierCity}`,
-        `STOCK_QUANTITY: ${p.stockQuantity}`,
-        `MANUFACTURER: ${p.manufacturer}`,
-        `RATING: ${p.rating}`,
-    ].join('\n');
-}
-
-function escapeSql(str) {
-    return String(str).replace(/'/g, "''");
-}
-
-/* ── Main ─────────────────────────────────────────────────────── */
-
+```js
 async function main() {
-    // 1 — Load products from SQLite
-    console.log('[embed] Connecting to SQLite...');
+    // 1 -- Read products from SQLite (populated by cds deploy)
     const db = await cds.connect.to('db');
     const products = await db.run(SELECT.from('edc.rag.Products'));
-    if (!products.length) throw new Error('No products found in SQLite. Run "cds deploy --to sqlite" first.');
     console.log(`[embed] Loaded ${products.length} products from SQLite`);
 
-    // 2 — Connect to HANA
-    console.log('[embed] Connecting to HANA Cloud...');
+    // 2 -- Connect to HANA Cloud
     const conn = await connectToHana();
-    console.log('[embed] HANA Cloud connection established');
-    console.log(`[embed] Using vector table: ${VECTOR_TABLE}`);
+    console.log(`[embed] HANA connected. Using table: ${VECTOR_TABLE}`);
 
-    // 3 — Recreate vector table
-    try { await hanaExec(conn, `DROP TABLE "${VECTOR_TABLE}"`); } catch { /* ok if not exists */ }
+    // 3 -- Drop and recreate the vector table
+    try { await hanaExec(conn, `DROP TABLE "${VECTOR_TABLE}"`); } catch { /* ok if table does not exist yet */ }
     await hanaExec(conn, `
         CREATE TABLE "${VECTOR_TABLE}" (
             "VEC_TEXT"   NCLOB,
-            "VEC_META"   NCLOB,
             "VEC_VECTOR" REAL_VECTOR
         )
     `);
-    console.log(`[embed] Vector table "${VECTOR_TABLE}" recreated`);
 
-    // 4 — Generate and insert embeddings in batches
+    // 4 -- Generate embeddings and insert in batches
     const texts = products.map(productToText);
-    const embeddingClient = new AzureOpenAiEmbeddingClient({ modelName: EMBEDDING_MODEL, resourceGroup: RESOURCE_GROUP });
+    const client = new AzureOpenAiEmbeddingClient({ modelName: EMBEDDING_MODEL, resourceGroup: RESOURCE_GROUP });
     let count = 0;
 
     for (let i = 0; i < texts.length; i += BATCH) {
-        const batchTexts = texts.slice(i, i + BATCH);
-        const embRes = await embeddingClient.run({ input: batchTexts });
-        const vectors = embRes.getEmbeddings();
+        const batch = texts.slice(i, i + BATCH);
+        const res   = await client.run({ input: batch });
+        const vecs  = res.getEmbeddings();
 
-        for (let j = 0; j < vectors.length; j++) {
-            const meta = JSON.stringify({ source: 'product_catalog.csv', row: i + j });
+        for (let j = 0; j < vecs.length; j++) {
+            const escaped = String(batch[j]).replace(/'/g, "''");
             await hanaExec(conn,
-                `INSERT INTO "${VECTOR_TABLE}" ("VEC_TEXT", "VEC_META", "VEC_VECTOR")
-                 VALUES ('${escapeSql(batchTexts[j])}', '${escapeSql(meta)}', TO_REAL_VECTOR('${JSON.stringify(vectors[j])}'))`
+                `INSERT INTO "${VECTOR_TABLE}" ("VEC_TEXT", "VEC_VECTOR")
+                 VALUES ('${escaped}', TO_REAL_VECTOR('${JSON.stringify(vecs[j])}'))`
             );
             count++;
         }
-
-        console.log(`[embed] Batch ${Math.floor(i / BATCH) + 1}: ${count}/${texts.length} embeddings inserted`);
+        console.log(`[embed] Batch ${Math.floor(i / BATCH) + 1}: ${count}/${texts.length} inserted`);
     }
 
     conn.disconnect();
     console.log(`[embed] Done. ${count} embeddings stored in "${VECTOR_TABLE}"`);
 }
 
-main().catch((err) => {
-    console.error('[embed] Error:', err.message);
-    process.exit(1);
-});
+main().catch(err => { console.error('[embed]', err.message); process.exit(1); });
 ```
 
-### How this maps to the notebook
+This is the core pipeline -- the same four steps from the notebook's indexing section:
 
-| Notebook step                     | Script equivalent                             |
-| --------------------------------- | --------------------------------------------- |
-| Load CSV with pandas              | Read from SQLite via CDS (`SELECT.from(...)`) |
-| `hdbcli.dbapi.connect(env_cloud)` | `@sap/hana-client` with `connectToHana()`     |
-| `init_embedding_model(...)`       | `new AzureOpenAiEmbeddingClient(...)`         |
-| `HanaDB.from_documents(...)`      | Manual INSERT with `TO_REAL_VECTOR(...)`      |
+1. **Load data.** Instead of `pd.read_csv()`, we use CDS to read from the SQLite database that `cds deploy` populated.
+2. **Connect to HANA Cloud.** Same as `hdbcli.dbapi.connect()` in the notebook.
+3. **Create the vector table.** The table has two columns: `VEC_TEXT` (the original product text as a large string) and `VEC_VECTOR` (the embedding, stored as HANA's native `REAL_VECTOR` type). `TO_REAL_VECTOR()` converts a JSON array of numbers into this type.
+4. **Generate and store embeddings.** Products are processed in batches of 25. For each batch, we call the embedding model and insert each resulting vector into HANA.
 
-The `productToText()` function formats each product record into the same labeled multi-line text format used in the notebook. This is the text that gets embedded -- the embedding model converts this text into a high-dimensional vector that captures its semantic meaning.
+### Notebook mapping
 
-The `REAL_VECTOR` column type is SAP HANA's native vector storage. The `TO_REAL_VECTOR()` SQL function converts a JSON array of numbers into this type.
+| Notebook step                     | Script equivalent                         |
+| --------------------------------- | ----------------------------------------- |
+| `pd.read_csv(...)`                | `SELECT.from('edc.rag.Products')` via CDS |
+| `hdbcli.dbapi.connect(env_cloud)` | `connectToHana()`                         |
+| `init_embedding_model(...)`       | `new AzureOpenAiEmbeddingClient(...)`     |
+| `HanaDB.from_documents(...)`      | `INSERT ... TO_REAL_VECTOR(...)`          |
 
 ---
 
@@ -355,7 +279,7 @@ npm run deploy
 
 This executes two steps:
 
-1. **`cds deploy --to sqlite`** -- Creates the SQLite database file (`db.sqlite`), applies the schema from `db/schema.cds`, and loads the CSV seed data. You should see output like:
+1. **`cds deploy --to sqlite`** -- Creates the SQLite database file, applies the schema, and loads the CSV seed data. You should see output like:
    ```
    [cds] - loaded model from 2 file(s):
      db/schema.cds
@@ -365,16 +289,12 @@ This executes two steps:
 
 2. **`node scripts/generate-embeddings.js`** -- Connects to HANA Cloud, creates your personal vector table, and generates embeddings for all 75 products. You should see output like:
    ```
-   [embed] Connecting to SQLite...
    [embed] Loaded 75 products from SQLite
-   [embed] Connecting to HANA Cloud...
-   [embed] HANA Cloud connection established
-   [embed] Using vector table: PRODUCTS_IT_ACCESSORY_CAP_ALICE
-   [embed] Vector table "PRODUCTS_IT_ACCESSORY_CAP_ALICE" recreated
-   [embed] Batch 1: 25/75 embeddings inserted
-   [embed] Batch 2: 50/75 embeddings inserted
-   [embed] Batch 3: 75/75 embeddings inserted
-   [embed] Done. 75 embeddings stored in "PRODUCTS_IT_ACCESSORY_CAP_ALICE"
+   [embed] HANA connected. Using table: PRODUCTS_IT_ACCESSORY_CAP_ABCD
+   [embed] Batch 1: 25/75 inserted
+   [embed] Batch 2: 50/75 inserted
+   [embed] Batch 3: 75/75 inserted
+   [embed] Done. 75 embeddings stored in "PRODUCTS_IT_ACCESSORY_CAP_ABCD"
    ```
 
 If you see errors, check that your credentials in `env_cloud.json` and `default-env.json` are correct, and that your `config.js` username is set.
@@ -385,7 +305,7 @@ If you see errors, check that your credentials in `env_cloud.json` and `default-
 
 **File:** `srv/catalog-service.cds`
 
-Your service currently only exposes the Products entity for basic CRUD-style reads. Now you will extend it with a custom **action** that accepts a natural-language question and returns a RAG-generated answer.
+Your service currently only exposes the Products entity for basic reads. Now you will extend it with a custom **action** that accepts a natural-language question and returns a RAG-generated answer.
 
 Key concepts:
 
@@ -417,7 +337,7 @@ service CatalogService @(path: '/api') {
 }
 ```
 
-Notice that the first part (the Products projection) is unchanged. You added two things:
+Notice that the Products projection from Exercise 2 is unchanged. You added two things:
 
 1. **`RAGResponse` type** -- The return type for the RAG action. It contains:
    - `answer`: The LLM-generated text response (using `LargeString` because answers can be long).
@@ -431,74 +351,68 @@ Notice that the first part (the Products projection) is unchanged. You added two
 
 **File:** `srv/catalog-service.js`
 
-In CAP, a `.cds` service definition acts as the contract (what the API looks like), and a `.js` file with the same name implements the behavior (what happens when someone calls the API). CAP automatically pairs them by filename -- `catalog-service.cds` and `catalog-service.js`.
+In CAP, a `.cds` service definition declares the contract (what the API looks like), and a `.js` file with the same name implements the behavior (what happens when someone calls the API). CAP automatically pairs them by filename -- `catalog-service.cds` and `catalog-service.js`.
 
-The handler class extends `cds.ApplicationService` and uses lifecycle hooks:
+Open `srv/catalog-service.js`. You will see that the helper functions (`connectToHana`, `hanaExec`, `extractField`, `buildPrompt`) are already provided at the bottom of the file with comments explaining what they do. You only need to add the imports, configuration, and service class above them.
 
-- **`init()`:** Called once when the service starts. Used for setup tasks like establishing database connections.
-- **`this.on('actionName', handler)`:** Registers a function to run when a specific action is called.
-- **`cds.on('served')`:** An event that fires after all services are up and the server is ready.
+### 7a. Imports and configuration
 
-Replace the contents of `srv/catalog-service.js` with the following. Read through the comments -- each numbered step maps to a stage in the RAG pipeline from the notebook.
+Add the following at the top of the file (below the existing comment):
 
 ```js
-/**
- * CatalogService -- mirrors the notebook's RAG pipeline:
- *
- *  ─────────────────────────────────────────────────────────
- *  hdbcli.dbapi.connect(env_cloud)    ->  @sap/hana-client
- *  GenAIHubProxyClient + init_llm     ->  AzureOpenAiChatClient
- *  init_embedding_model               ->  AzureOpenAiEmbeddingClient
- *  HanaDB vector store                ->  Direct SQL with REAL_VECTOR
- *  retrieval_chain.invoke(question)   ->  POST /api/askQuestion(question=...)
- */
 const cds = require('@sap/cds');
-const hana = require('@sap/hana-client');
-const path = require('path');
-const fs = require('fs');
 
-// ── Config ──
-const { embeddingModel: EMBEDDING_MODEL, llmModel: LLM_MODEL, resourceGroup: RESOURCE_GROUP,
-    topK: TOP_K, vectorTable: VECTOR_TABLE } = require('../config');
+const {
+    embeddingModel: EMBEDDING_MODEL,
+    llmModel:       LLM_MODEL,
+    resourceGroup:  RESOURCE_GROUP,
+    topK:           TOP_K,
+    vectorTable:    VECTOR_TABLE,
+} = require('../config');
 
 let hanaConn = null;
+```
 
+Same libraries as the embedding script. The config adds two new values: `LLM_MODEL` (for the chat model) and `TOP_K` (how many results to retrieve from the vector search). The `hanaConn` variable holds the HANA connection at module scope so it persists across HTTP requests. Note that `path`, `fs`, and `hana` are already imported by the pre-provided helper functions at the bottom of the file.
+
+### 7b. Service class with startup logic
+
+```js
 module.exports = class CatalogService extends cds.ApplicationService {
 
     async init() {
-        // ── On startup: connect to HANA ──
+        // Connect to HANA once the server is ready
         cds.on('served', async () => {
             try {
                 hanaConn = await connectToHana();
-                console.log('[rag] HANA Cloud connection established');
-
-                const hasData = await hanaTableHasData(hanaConn, VECTOR_TABLE);
-                if (!hasData) {
-                    console.warn(`[rag] WARNING: Vector table "${VECTOR_TABLE}" is empty. Run "npm run deploy" to generate embeddings.`);
-                } else {
-                    console.log(`[rag] Vector table "${VECTOR_TABLE}" ready`);
-                }
+                console.log('[rag] HANA Cloud connected');
             } catch (err) {
-                console.error('[rag] Startup error:', err.message);
+                console.error('[rag] Could not connect to HANA:', err.message);
             }
         });
+```
 
-        // ── askQuestion handler ──
+The class extends `cds.ApplicationService`, which is the base class for all CAP service handlers. The `init()` method is called once when the service starts. Inside it, `cds.on('served')` registers a callback that fires after all services are up and the HTTP server is listening. This is where we establish the HANA connection that will be reused for every incoming request.
+
+### 7c. The askQuestion handler -- the RAG pipeline
+
+Add this directly below the startup block, still inside `init()`:
+
+```js
+        // Register the askQuestion action handler
         this.on('askQuestion', async (req) => {
             const { question } = req.data;
-            if (!question) return req.error(400, 'Question is required');
-
             if (!hanaConn) return req.error(503, 'HANA connection not ready');
 
             const { AzureOpenAiEmbeddingClient, AzureOpenAiChatClient } =
                 require('@sap-ai-sdk/foundation-models');
 
-            // 1 ─ Embed the question
+            // Step 1 -- Embed the question
             const embeddingClient = new AzureOpenAiEmbeddingClient({ modelName: EMBEDDING_MODEL, resourceGroup: RESOURCE_GROUP });
             const embRes = await embeddingClient.run({ input: [question] });
             const queryVector = embRes.getEmbedding(0);
 
-            // 2 ─ Vector similarity search in HANA Cloud
+            // Step 2 -- Vector similarity search in HANA Cloud
             const sql = `SELECT TOP ${TOP_K}
                     "VEC_TEXT",
                     COSINE_SIMILARITY("VEC_VECTOR", TO_REAL_VECTOR('${JSON.stringify(queryVector)}')) AS "SCORE"
@@ -507,14 +421,10 @@ module.exports = class CatalogService extends cds.ApplicationService {
 
             const rows = await hanaExec(hanaConn, sql);
 
-            if (!rows.length) {
-                return req.error(400, 'No embeddings found in HANA. Restart the server to generate them.');
-            }
-
-            // 3 ─ Build context from top-k
+            // Step 3 -- Build context from retrieved documents
             const context = rows.map(r => r.VEC_TEXT).join('\n\n');
 
-            // 4 ─ Call LLM
+            // Step 4 -- Call the LLM with the augmented prompt
             const chatClient = new AzureOpenAiChatClient({ modelName: LLM_MODEL, resourceGroup: RESOURCE_GROUP });
             const chatRes = await chatClient.run({
                 messages: [{ role: 'user', content: buildPrompt(context, question) }],
@@ -523,9 +433,9 @@ module.exports = class CatalogService extends cds.ApplicationService {
 
             const answer = chatRes.getContent();
             const sources = rows.slice(0, 10).map(r => ({
-                productID: extractField(r.VEC_TEXT, 'PRODUCT_ID'),
+                productID:   extractField(r.VEC_TEXT, 'PRODUCT_ID'),
                 productName: extractField(r.VEC_TEXT, 'PRODUCT_NAME'),
-                score: r.SCORE,
+                score:       r.SCORE,
             }));
 
             return { answer, sources };
@@ -534,108 +444,29 @@ module.exports = class CatalogService extends cds.ApplicationService {
         return super.init();
     }
 };
-
-/* ═══════════════════════════════════════════════════════════════
- *  HANA Cloud connection
- * ═══════════════════════════════════════════════════════════════ */
-
-function loadHanaCredentials() {
-    const envPath = path.join(__dirname, '..', 'env_cloud.json');
-    return JSON.parse(fs.readFileSync(envPath, 'utf-8'));
-}
-
-function connectToHana() {
-    return new Promise((resolve, reject) => {
-        const creds = loadHanaCredentials();
-        const conn = hana.createConnection();
-        conn.connect({
-            serverNode: `${creds.url}:${creds.port}`,
-            uid: creds.user,
-            pwd: creds.pwd,
-            encrypt: true,
-            sslValidateCertificate: false,
-        }, (err) => {
-            if (err) reject(err);
-            else resolve(conn);
-        });
-    });
-}
-
-function hanaExec(conn, sql) {
-    return new Promise((resolve, reject) => {
-        conn.exec(sql, (err, rows) => {
-            if (err) reject(err);
-            else resolve(rows || []);
-        });
-    });
-}
-
-async function hanaTableHasData(conn, table) {
-    try {
-        const rows = await hanaExec(conn, `SELECT COUNT(*) AS "CNT" FROM "${table}"`);
-        return rows[0]?.CNT > 0;
-    } catch {
-        return false;
-    }
-}
-
-/* ═══════════════════════════════════════════════════════════════
- *  Helpers
- * ═══════════════════════════════════════════════════════════════ */
-
-function extractField(vecText, field) {
-    const match = vecText && vecText.match(new RegExp(`${field}:\\s*(.+)`));
-    return match ? match[1].trim() : '';
-}
-
-/**
- * Same prompt template as notebook cell 46 (prompt_template).
- */
-function buildPrompt(context, question) {
-    return `Use the following pieces of context to answer the question at the end.
-If you don't know the answer, just say you don't know. Do not make up an answer.
-
-Format the results as a list of JSON items with these keys:
-    - "PRODUCT_ID"
-    - "PRODUCT_NAME"
-    - "CATEGORY"
-    - "DESCRIPTION"
-    - "UNIT_PRICE"
-    - "SUPPLIER_ID"
-    - "SUPPLIER_NAME"
-    - "LEAD_TIME_DAYS"
-    - "MIN_ORDER"
-    - "CURRENCY"
-    - "SUPPLIER_COUNTRY"
-    - "SUPPLIER_ADDRESS"
-    - "STATUS"
-    - "SUPPLIER_CITY"
-    - "STOCK_QUANTITY"
-    - "MANUFACTURER"
-    - "RATING"
-
-Note:
-    - The 'RATING' must be an integer from 0 (bad) to 5 (excellent).
-    - Do not include markdown or code blocks like \`\`\`json.
-
-${context}
-
-Question: ${question}`;
-}
 ```
 
-### How the handler maps to the notebook
+These are the same four RAG steps from the notebook:
 
-| Notebook step                                       | Handler equivalent                                       |
-| --------------------------------------------------- | -------------------------------------------------------- |
-| `init_embedding_model(...)`                         | `new AzureOpenAiEmbeddingClient(...)`                    |
-| `embedding_model.embed_query(question)`             | `embeddingClient.run({ input: [question] })`             |
-| `COSINE_SIMILARITY(...)` SQL in notebook            | Same SQL, executed via `hanaExec()`                      |
-| `retrieval_chain` context building                  | `rows.map(r => r.VEC_TEXT).join(...)`                    |
-| `init_llm(...)` + `chain.invoke(question)`          | `new AzureOpenAiChatClient(...)` + `chatClient.run(...)` |
-| `prompt_template` with `{context}` and `{question}` | `buildPrompt(context, question)`                         |
+1. **Embed the question.** Convert the user's natural-language question into a vector using the same embedding model that was used to embed the products.
+2. **Vector similarity search.** Run a SQL query against HANA Cloud that computes `COSINE_SIMILARITY` between the question vector and every product vector, returning the top 25 most similar results.
+3. **Build context.** Concatenate the retrieved product texts into a single context string that the LLM can read.
+4. **Call the LLM.** Send the context and question to the chat model using the same prompt template from the notebook. The LLM generates an answer grounded in the retrieved products.
 
-The structure is the same RAG pipeline you built in the notebook. The difference is that here it runs inside a CAP service, triggered by an HTTP POST request, instead of being called interactively in a notebook cell.
+The response includes both the LLM's `answer` and the `sources` -- the top 10 products from the vector search with their similarity scores, giving transparency into what the retrieval step found.
+
+### Notebook mapping
+
+| Notebook step                              | Handler equivalent                                       |
+| ------------------------------------------ | -------------------------------------------------------- |
+| `init_embedding_model(...)`                | `new AzureOpenAiEmbeddingClient(...)`                    |
+| `embedding_model.embed_query(question)`    | `embeddingClient.run({ input: [question] })`             |
+| `COSINE_SIMILARITY(...)` SQL               | Same SQL via `hanaExec()`                                |
+| `retrieval_chain` context building         | `rows.map(r => r.VEC_TEXT).join(...)`                    |
+| `init_llm(...)` + `chain.invoke(question)` | `new AzureOpenAiChatClient(...)` + `chatClient.run(...)` |
+| `prompt_template`                          | `buildPrompt(context, question)`                         |
+
+The difference is that here the pipeline runs inside a CAP service, triggered by an HTTP POST request, instead of being called interactively in a notebook cell.
 
 ---
 
@@ -654,15 +485,10 @@ You should see output confirming that the service is running and the HANA connec
   db/schema.cds
   srv/catalog-service.cds
 
-[cds] - connect to db > sqlite { url: ':memory:' }
-  > init from db/data/edc.rag-Products.csv
-/> successfully deployed to in-memory database.
-
 [cds] - serving CatalogService { path: '/api' }
 
 [cds] - server listening on { url: 'http://localhost:4004' }
-[rag] HANA Cloud connection established
-[rag] Vector table "PRODUCTS_IT_ACCESSORY_CAP_ALICE" ready
+[rag] HANA Cloud connected
 ```
 
 ### Test the Products endpoint
@@ -705,4 +531,4 @@ You have built a complete RAG application using SAP CAP:
 | Embedding script   | `scripts/generate-embeddings.js` | Converts products to vectors and stores them in HANA Cloud         |
 | Configuration      | `config.js`                      | Central settings for models, table names, and parameters           |
 
-The application follows the same RAG architecture from the notebook -- **indexing** (exercise 4-5) and **retrieval + generation** (exercise 7) -- but packaged as a production-ready REST API instead of interactive notebook cells.
+The application follows the same RAG architecture from the notebook -- **indexing** (exercises 4-5) and **retrieval + generation** (exercise 7) -- but packaged as a REST API instead of interactive notebook cells.
