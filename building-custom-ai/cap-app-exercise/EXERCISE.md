@@ -11,7 +11,7 @@ By the end of this exercise you will have a running REST API that:
 
 ---
 
-## Prerequisites
+## Prerequisites (Already installed in BAS)
 
 - Node.js 18 or later installed.
 - The `@sap/cds-dk` CLI installed globally (`npm i -g @sap/cds-dk`).
