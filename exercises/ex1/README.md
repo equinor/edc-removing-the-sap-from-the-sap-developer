@@ -62,10 +62,67 @@ The first part of the new app is the domain model with these entities:
 
 <br>![](/exercises/ex1/images/01_02_0010.png)
 
-
 1. In folder _xflights/db_, create a file named _schema.cds_.
 
-2. Copy the content of [assets/ex1/schema.cds](../../assets/ex1/schema.cds) into the new file. 
+2. Copy the following content into the file: 
+
+```cds
+using { Currency, Country, cuid, sap.common.CodeList } from '@sap/cds/common';
+
+namespace sap.capire.flights;
+
+entity Airlines : cuid {
+  name     : String;
+  icon     : String;
+  currency : Currency;
+}
+
+entity Airports : cuid {
+  name    : String;
+  city    : String;
+  country : Country;
+}
+
+entity Connections {
+  key ID      : String(11); // e.g. LH4711
+  airline     : Association to Airlines;
+  origin      : Association to Airports;
+  destination : Association to Airports;
+  departure   : Time;
+  arrival     : Time;
+  distance    : Integer; // in kilometers
+}
+
+entity Flights {
+  key flight     : Association to Connections;
+  key date       : Date;
+  aircraft       : String;
+  price          : Price;
+  currency       : Currency;
+  maximum_seats  : Integer;
+  occupied_seats : Integer; // partly transactional
+};
+
+entity Supplements : cuid {
+  type     : Association to SupplementTypes;
+  descr    : localized String(1111);
+  price    : Price;
+  currency : Currency;
+}
+
+entity SupplementTypes : CodeList {
+  key code : String(2) enum {
+    Beverage = 'BV';
+    Meal = 'ML';
+    Luggage = 'LU';
+    Extra = 'EX';
+  }
+}
+
+type Price : Decimal(9,4);
+```
+
+
 
 3. Observe the console output for `cds watch`. As soon as you save the file _schema.cds_,
 the still running `cds watch` reacts immediately with new output like this:
@@ -78,6 +135,7 @@ the still running `cds watch` reacts immediately with new output like this:
     Note that due to the _.env_ file, xflights is started on port 4005.
     This becomes important later, when you start the xtravels app in parallel.
 
+If there is an error, check package.json and use the "quick fix" functionality
 
 > [!TIP]
 > It can happen that `cds watch` doesn't detect a change automatically.
