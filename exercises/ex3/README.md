@@ -213,6 +213,17 @@ the API entity `Customers` reading data from the S/4 sandbox system S09.
    ```env
    destinations=[{"name":"EDC_API_BUSINESS_PARTNER","proxyHost":"http://127.0.0.1","proxyPort":"8887","url":"http://EDC_API_BUSINESS_PARTNER.dest"}]
    ```
+
+4. Add the following code in the travel-service.js file. This will trigger the API call in S/4
+
+```js
+ const { Customers } = this.entities;
+	const service = await cds.connect.to('OP_API_BUSINESS_PARTNER_SRV');
+	console.log(`Connected to API_BUSINESS_PARTNER service`);
+	this.on('READ', Customers, request => {
+		return service.tx(request).run(request.query);
+	});
+```
    
 Following the CAP principle of "local development and testing", you first
 test the xtravels app with the Data Product entities being mocked by local
