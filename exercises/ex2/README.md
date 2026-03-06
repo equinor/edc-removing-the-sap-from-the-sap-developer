@@ -241,4 +241,4 @@ You've now created CAP app xtravels and consumed the master data served by the x
 So far we have been only looking at CAP level Data Federation with service level replication.
 In the next section we will apply the principles of CAP Data Federation to consume a BDC Data Product.
 
-Continue to - [Exercise 3 - Consume S/4 Data Product Customer](../ex3/README.md)
+Continue to - [Exercise 3 - Consume S/4 API Business Partner](../ex3/README.md)
