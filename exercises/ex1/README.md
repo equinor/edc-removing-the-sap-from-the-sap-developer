@@ -11,12 +11,13 @@ created in the [Preparation](../ex0/README.md) section.
 
 After completing these steps, you will have the basic project structure of the xflights app.
 
-1. In VS Code, open a terminal.
+1. In BAS, open a terminal.
 
     <br>![](/exercises/ex1/images/01_01_0010.png)
 
 2. Go to the terminal and create the xflights project with
     ```sh
+    cd ws
     cds init xflights && cd xflights
     ```
     This creates a directory _xflights_ with the basic structure for a CAP app.
