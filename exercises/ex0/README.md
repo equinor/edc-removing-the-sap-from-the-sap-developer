@@ -20,7 +20,7 @@ where you develop the apps.
    
     <br>![](/exercises/ex0/images/create_devspace2.png)
 
-
+6. Wait for the status to become "RUNNING" and enter the newly created devspace.
 
 ## Preparation 2 - Clone
 
