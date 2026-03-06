@@ -40,15 +40,7 @@ API "Business Partner (A2X) " to _ws/xtravels_.
 
 1. At the bottom of the screen for API "Business Partner (A2X)" go the the API Specification section and download the EDMX 
 
-2. Download the CSN Interop JSON. It will probably be stored
-as file _sap-s4com-Customer-v1.json_ in directory _C:\Users\TE-XX\Downloads_.
-
-    If you should not be able to download the CSN Interop JSON for any reason,
-    you can use [_assets/ex3/sap-s4com-Customer-v1.json_](../../assets/ex3/sap-s4com-Customer-v1.json).
-
-3. Copy the file to folder _xtravels_ in your workspace.
-
-    <br>![](/exercises/ex3/images/03_02_0030.png)
+2. Copy the file to folder _xtravels_ in your workspace.
 
 
 
@@ -62,46 +54,45 @@ metadata as API package into your xtravels project.
 2. Import the Data Product metadata to the CDS model of the xtravels app
 with this command:
     ```sh
-    cds import --data-product sap-s4com-Customer-v1.json
+    cds import OP_API_BUSINESS_PARTNER_SRV.edmx --as cds
     ```
 
-    The import creates a folder _xtravels\apis\imported\sap-s4com-customer-v1_
-    that structurally is almost identical to the API package of the xflights app.
+    The import creates a folder _xtravels\srv\external with a new cds file.
 
-    <br>![](/exercises/ex3/images/03_03_0010.png)
 
-3. Have a look at file _services.cds_ in the new folder.  
-Here you find the Data Product `Customer` represented as a service,
-and the data sets of the Data Product are represented as entities:
+3. Have a look at file _OP_API_BUSINESS_PARTNER_SRV.cds_ in the new folder.  
+Here you find the API Business Partner` represented as a service,
+and the endpoints of the API are represented as entities:
     ```cds
     @cds.external : true
-    @data.product : true
-    @protocol : 'none'
-    service sap.s4com.Customer.v1 {
-      entity Customer {
-        key Customer : String(10);
-        CustomerName : String(80);
-        CustomerFullName : String(220);
-        //...
-      }
-      entity CustomerCompanyCode {
-        key Customer : String(10);
-        key CompanyCode : String(4);
-        AccountingClerk : String(2);
-        ReconciliationAccount : String(10);
+    @m.IsDefaultEntityContainer : 'true'
+    @sap.message.scope.supported : 'true'
+    @sap.supported.formats : 'atom json xlsx'
+    service OP_API_BUSINESS_PARTNER_SRV {
+      @cds.external : true
+      @cds.persistence.skip : true
+      @sap.content.version : '1'
+      @sap.label : 'Email Address'
+      entity A_AddressEmailAddress {
+        @sap.display.format : 'UpperCase'
+        @sap.label : 'Address Number'
+        key AddressID : String(10) not null;
+        @sap.display.format : 'UpperCase'
+        @sap.label : 'Person Number'
+        key Person : String(10) not null;
+        @sap.display.format : 'NonNegative'
         //...
       }
       //...
     }
     ```
 
-    The name of the service reflects the ORD ID of the Data Product.
+    The name of the service reflects the ORD ID of the API.
 
-4. Have a look at file _annotations.cds_ in the same folder.  
-The Data Product entities come with a lot of annotations, e.g. `@title` for labels.
-The corresponding localized texts are also part of the Data Products's API package in folder _\_i18n_.
+4. Have a closer look at the new file.  
+The API entities come with a lot of annotations, e.g. `@label` for labels.
 
-5. Have a look at file _xtravels/package.json_. A new dependency has been added:
+5. Have a look at file _xtravels/package.json_. A new cds section has been added:
 
     <br>![](/exercises/ex3/images/03_03_0020.png)
 
@@ -122,17 +113,15 @@ interface to entity `Customer` of the imported API.
 
 2. Fill the new file with this content:
     ```cds
-    using { sap.s4com.Customer.v1 as Cust } from 'sap-s4com-customer-v1';
+    using {OP_API_BUSINESS_PARTNER_SRV as external} from '../srv/external/OP_API_BUSINESS_PARTNER_SRV';
 
     namespace sap.capire.travels.masterdata;
-
-    @federated entity Customers as projection on Cust.Customer {
+    
+    @federated entity A_Customers as projection on external.A_Customer {
       Customer as ID,
       CustomerName as FullName,
-      StreetName as Street,
-      PostalCode,
-      CityName as City,
-      TelephoneNumber1 as PhoneNumber
+      FiscalAddress as Street,
+      CityCode as PostalCode,
     }
     ```
 
@@ -200,30 +189,31 @@ the API entity `Customers` reading data from the S/4 sandbox system S09.
 
 2. package.json
    You have defined the new service. And now it needs to connect to the destination and the correct odata service in S/4.
-   Enter the following cds section in the package.json file
+   Adjust the following cds section in the package.json file
     ```json
-    cds": {
-    "requires": {
-      "connectivity": true,
-      "destination": true,
-      "html5-repo": true,
-      "authentication": "xsuaa",
-      "API_BUSINESS_PARTNER": {
-        "kind": "odata-v2",
-        "model": "srv/external/API_BUSINESS_PARTNER",
-        "credentials": {
-          "destination": "EDC_API_BUSINESS_PARTNER",
-          "path": "/sap/opu/odata/sap/API_BUSINESS_PARTNER"
+        "cds": {
+        "requires": {
+          "connectivity": true,
+          "destination": true,
+          "html5-repo": true,
+          "authentication": "xsuaa",
+          "OP_API_BUSINESS_PARTNER_SRV": {
+            "kind": "odata-v2",
+            "model": "srv/external/OP_API_BUSINESS_PARTNER_SRV",
+            "credentials": {
+              "destination": "EDC_API_BUSINESS_PARTNER",
+              "path": "/sap/opu/odata/sap/API_BUSINESS_PARTNER"
+            }
         }
-      },
-      "[production]": {
-        "auth": "xsuaa"
       }
-    }
-  }
     ```
    
-
+3. .env file
+   Create a new .env file and add the following
+   ```env
+   destinations=[{"name":"EDC_API_BUSINESS_PARTNER","proxyHost":"http://127.0.0.1","proxyPort":"8887","url":"http://EDC_API_BUSINESS_PARTNER.dest"}]
+   ```
+   
 Following the CAP principle of "local development and testing", you first
 test the xtravels app with the Data Product entities being mocked by local
 tables in a SQLite in-memory database.
