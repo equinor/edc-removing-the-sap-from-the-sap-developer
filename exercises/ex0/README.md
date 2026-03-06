@@ -24,23 +24,13 @@ where you develop the apps.
 
 ## Preparation 2 - Clone
 
-On the TechEd machines, you have a local user of the form `EMEAnnnn` (with `nnnn` being some number).
+Wnter the folder structure and select "Clone Repository"
 
-To set up your workspace, first go to your user's home directory
-(if the console hasn't already opened in this directory):
+THe repository link is : git clone https://github.com/SAP-samples/teched2025-AD161.git
 
-```sh
-cd C:\Users\EMEAnnnn
-```
+Select the folder /home/user/projects.
+Open the repository
 
-Once in this folder, clone the repo of this session, move into the `ws` folder within it,
-and then open it with VS Code:
-
-```sh
-git clone https://github.com/SAP-samples/teched2025-AD161.git
-cd teched2025-AD161\ws
-code .
-```
 
 The `ws` folder is where you will be developing the CAP applications.
 
@@ -49,15 +39,6 @@ You should see this folder structure:
 <br>![](/exercises/ex0/images/00_02_0010.png)
 
 Ignore folder _xtravels_ for the time being, it will only be used in [Exercise 2](../ex2/README.md).
-
-
-
-## Preparation 3 - (optional) Activate auto-save
-
-Each time you change a file in the course of this exercise, don't forget to save with `Ctrl+S` or via the "File" menu.
-Alternatively, you can also activate the "Auto Save" feature of VS Code via the "File" menu.
-
-
 
 ## Preparation 4 - Copying 
 
@@ -70,6 +51,6 @@ in Windows Explorer and then copy the files from there into VS Code via Drag & D
 
 ## Summary
 
-You have now installed the _cds toolkit_ and prepared the workspace.
+You have now prepared the workspace.
 
 Continue to - [Exercise 1 - Build CAP app xflights](../ex1/README.md)
