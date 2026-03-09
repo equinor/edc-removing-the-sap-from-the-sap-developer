@@ -6,7 +6,7 @@ SAP workshop
 3. Intro to SAP (erp.equinor.com ) - Frank
 4. Intro to CAP excercise - Ingrid Marie
 5. CAP Exercise - Ingrid Marie
-6. Break ( 11-11.30 )
+6. Break ( Lunsj )
 7. Using AI with SAP - Frank
 8. Intro to AI Excercise - Espen
 9. AI Excercise - Espen
