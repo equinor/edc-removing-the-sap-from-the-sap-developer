@@ -1,6 +1,0 @@
-{
-    "user": "<your-hana-user>",
-    "pwd": "<your-hana-password>",
-    "url": "<your-hana-host>",
-    "port": 443
-}

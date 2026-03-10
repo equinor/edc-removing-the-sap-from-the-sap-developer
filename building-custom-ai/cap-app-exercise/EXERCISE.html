@@ -152,7 +152,9 @@ cds <span class="token function">watch</span>                <span class="token 
 <li><a href="http://localhost:4004/api/Products">http://localhost:4004/api/Products</a> -- The Products endpoint, returning all 75 products as JSON.</li>
 </ul>
 <p>If you see the product data, your schema, service definition, and seed data are all working correctly. Stop the server with <code>Ctrl+C</code> before continuing.</p>
-<hr>
+<p>If the command is not recognised, try:</p>
+<pre data-role="codeBlock" data-info="bash" class="language-bash bash"><code><span class="token function">npm</span> <span class="token function">install</span> <span class="token parameter variable">-g</span> @sap/cds-dk
+</code></pre><hr>
 <h2 id="exercise-4-create-the-embedding-script">Exercise 4: Create the Embedding Script </h2>
 <p><strong>File:</strong> <code>scripts/generate-embeddings.js</code></p>
 <p>In the notebook you used Python with langchain and hdbcli to generate embeddings and store them in HANA Cloud. This script does the same thing in Node.js, using the SAP AI SDK and SAP HANA client library.</p>

@@ -158,6 +158,12 @@ Open your browser and navigate to:
 
 If you see the product data, your schema, service definition, and seed data are all working correctly. Stop the server with `Ctrl+C` before continuing.
 
+If the command is not recognised, try: 
+
+```bash
+npm install -g @sap/cds-dk
+```
+
 ---
 
 ## Exercise 4: Create the Embedding Script
