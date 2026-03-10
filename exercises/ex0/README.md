@@ -24,9 +24,9 @@ where you develop the apps.
 
 ## Preparation 2 - Clone
 
-Wnter the folder structure and select "Clone Repository"
+Enter the folder structure and select "Clone Repository"
 
-THe repository link is : git clone https://github.com/SAP-samples/teched2025-AD161.git
+THe repository link is : https://github.com/equinor/edc-removing-the-sap-from-the-sap-developer.git
 
 Select the folder /home/user/projects.
 Open the repository
