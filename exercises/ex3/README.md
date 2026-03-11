@@ -26,7 +26,7 @@ in [SAP Business Accelerator Hub](https://api.sap.com/).
 2. Select the Product "SAP S/4HANA Cloud Private Edition".
 3. Select APIs and ODATA V2. Search for Business Partner. Select the API called "Business Partner (A2X)". 
 
-    <br>![](/exercises/ex3/images/03_01_0010.png)
+    <br>![](/exercises/ex3/images/business_partner_search.png)
 
 4. Log on with your SAP user and view the API documentation. Under the API Reference tab you can find the various endpoints including Customer which is the one we will use. 
 
@@ -38,7 +38,9 @@ Note: You can also try the Joule AI assistant to find this API. Try requesting s
 After completing these steps, you will have downloaded a EDMX file with the metadata of
 API "Business Partner (A2X) " to _ws/xtravels_.
 
-1. At the bottom of the screen for API "Business Partner (A2X)" go the the API Specification section and download the EDMX 
+1. At the bottom of the screen for API "Business Partner (A2X)" go the the API Specification section and download the EDMX
+
+    <br>![](/exercises/ex3/images/download_edmx.png)
 
 2. Copy the file to folder _xtravels_ in your workspace.
 
@@ -59,8 +61,11 @@ with this command:
 
     The import creates a folder _xtravels\srv\external with a new cds file.
 
+   <br>![](/exercises/ex3/images/srv_external.png)
 
-3. Have a look at file _OP_API_BUSINESS_PARTNER_SRV.cds_ in the new folder.  
+
+
+4. Have a look at file _OP_API_BUSINESS_PARTNER_SRV.cds_ in the new folder.  
 Here you find the API Business Partner` represented as a service,
 and the endpoints of the API are represented as entities:
     ```cds
@@ -89,15 +94,15 @@ and the endpoints of the API are represented as entities:
 
     The name of the service reflects the ORD ID of the API.
 
-4. Have a closer look at the new file.  
+5. Have a closer look at the new file.  
 The API entities come with a lot of annotations, e.g. `@label` for labels.
 
-5. Have a look at file _xtravels/package.json_. A new cds section has been added:
+6. Have a look at file _xtravels/package.json_. A new cds section has been added:
 
-    <br>![](/exercises/ex3/images/03_03_0020.png)
+    <br>![](/exercises/ex3/images/package_json_dependency.png)
 
 
-6. In the xtravels terminal, run
+7. In the xtravels terminal, run
     ```sh
     npm install
     ```
@@ -126,15 +131,15 @@ interface to entity `Customer` of the imported API.
     ```
 
 This is a so called "consumption" view that acts as single point of
-access to the Data Product entity. All references to the Data Product
+access to the API entity. All references to the API
 in your app's model and custom code should address this entity.
 
-In the consumption view, you select only those elements of the Data Product entity
+In the consumption view, you select only those elements of the API entity
 that you actually want to use in your application.
-In addition, the fields of the imported Data Product entity `Customer` are renamed so
+In addition, the fields of the imported API entity `Customer` are renamed so
 that they match those of entity `Passengers`, which you are going to replace.
 
-You won't use the other entities of the Data Product in our xtravels app,
+You won't use the other entities of the API in our xtravels app,
 thus you don't add consumption views for them.
 
 
