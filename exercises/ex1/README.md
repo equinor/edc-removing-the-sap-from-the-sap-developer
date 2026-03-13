@@ -23,6 +23,11 @@ After completing these steps, you will have the basic project structure of the x
     This creates a directory _xflights_ with the basic structure for a CAP app.
     Then it also changes your current directory to _xflights_.
 
+    To install required dependencies, from folder xlifghts run: 
+    ```
+    npm install
+    ```
+
     <br>![](/exercises/ex1/images/01_01_0020.png)
 
 3. In folder _xflights_, add a file _.env_ with this content:
