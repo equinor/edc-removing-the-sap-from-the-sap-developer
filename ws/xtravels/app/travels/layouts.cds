@@ -101,10 +101,10 @@ annotate TravelService.Travels with @UI : {
   ]},
   FieldGroup#CustomerData : { Data : [
     { Value : (Customer.FullName) },
-    { Value : (Customer.City) },
+    //{ Value : (Customer.City) },
     { Value : (Customer.Street) },
 //    { Value : (Customer.Country) },
-    { Value : (Customer.PhoneNumber) }
+    //{ Value : (Customer.PhoneNumber) }
   ]}
 };
 

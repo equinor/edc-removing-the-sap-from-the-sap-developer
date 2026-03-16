@@ -6,6 +6,9 @@ using {
   sap.capire.travels.masterdata.Supplements,
 } from './master-data';
 
+using {
+  sap.capire.travels.masterdata.Customers // the consumption view
+} from './customers';
 
 entity Travels : managed {
   key ID       : Integer default 0 @readonly;
@@ -17,7 +20,7 @@ entity Travels : managed {
   Currency     : Currency default 'EUR';
   Status       : Association to TravelStatus @readonly default 'O';
   Agency       : Association to TravelAgencies;
-  Customer     : Association to Passengers;
+  Customer     : Association to Customers;
   Bookings     : Composition of many Bookings on Bookings.Travel = $self;
 }
 

@@ -1,6 +1,14 @@
 const cds = require('@sap/cds')
 module.exports = class TravelService extends cds.ApplicationService { async init() {
 
+
+  const { Customers } = this.entities;
+	const service = await cds.connect.to('SAP_ICSM_BusinessPartnerExt');
+	console.log(`Connected to API_BUSINESS_PARTNER service`);
+	this.on('READ', Customers, request => {
+		return service.tx(request).run(request.query);
+	});
+
   // Reflected definitions from the service's CDS model
   const { Flights, Travels, Bookings, 'Bookings.Supplements': Supplements } = this.entities
   const { Open='O', Accepted='A', Canceled='X' } = {}

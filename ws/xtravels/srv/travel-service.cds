@@ -15,6 +15,7 @@ service TravelService {
 
   entity Passengers as projection on db.Passengers;
 
+  entity Customers as projection on db.masterdata.Customers;
 }
 
 
