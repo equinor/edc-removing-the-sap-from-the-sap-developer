@@ -43,9 +43,7 @@ Ignore folder _xtravels_ for the time being, it will only be used in [Exercise 2
 ## Preparation 4 - Copying 
 
 In the course of the exercises, you will need to copy some files from the [assets](../../assets) folder
-into the workspace. The simplest way to do this is to open folder _C:\Users\EMEAnnnn\teched2025-AD161\assets_
-(with `EMEAnnnn` being your local Windows user name)
-in Windows Explorer and then copy the files from there into VS Code via Drag & Drop.
+
 
 
 
