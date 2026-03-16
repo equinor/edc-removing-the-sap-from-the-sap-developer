@@ -45,10 +45,10 @@ will disappear when we add the missing parts.
 
 3. In the new terminal, change to the _xtravels_ folder (assuming the terminal has opened in your workspace root folder _ws_):
     ```sh
-    cd xtravels
+    cd ../xtravels
     ```
 
-    Your VS Code window should now look like this:
+    Your BAS window should now look like this:
 
     <br>![](/intro-to-cap/ex2/images/02_01_0040.png)
 
@@ -73,7 +73,7 @@ that you have exported from the xflights app in the previous exercise.
     In _node\_modules_, you can find a symbolic link for _xflights-flight-data_ pointing
     to _apis/flights-data_.
 
-
+You may get some dependancy error messages. If so, choose the "Quick fix" option
 
 ## Exercise 2.3 - Use the master data
 
