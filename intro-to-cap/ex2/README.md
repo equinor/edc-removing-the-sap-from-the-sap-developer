@@ -172,6 +172,13 @@ On startup of xtravels, the CAP runtime recognizes that service `sap.capire.flig
 is served in another app (xflights), where entities `Flights` and `Supplements` are exposed.
 xtravels then calls out to xflights, fetches all the data and caches it locally.
 
+This automatic replication is not part of the released standard CAP functionality,
+but a preview of what we are currently working on.
+It is implemented as a plugin directly in the xtravels app. You can have a look at the
+implementation at [xtravels/.plugins/fed-xrv](/ws/xtravels/.plugins/fed-xrv).
+Besides the "Initial Load Replication", we are working on other ways of integration,
+e.g. also directly in the database.
+
 
 1. Stop `cds watch` in the xtravels terminal by typing `Ctrl+C`.
 
