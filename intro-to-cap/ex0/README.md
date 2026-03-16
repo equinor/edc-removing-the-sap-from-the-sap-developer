@@ -8,17 +8,17 @@ where you develop the apps.
 ## Preparation 1 - Create devspace
 
 1. Go to SAP Build.
-    <br>![](/exercises/ex0/images/Build_link.png)
+    <br>![](/intro-to-cap/ex0/images/Build_link.png)
 
 2. Go to Dev Space Manager
-     <br>![](/exercises/ex0/images/Space_link.png)
+     <br>![](/intro-to-cap/ex0/images/Space_link.png)
 
 4. Create a new Dev Space
-    <br>![](/exercises/ex0/images/create_devspace.png)
+    <br>![](/intro-to-cap/ex0/images/create_devspace.png)
 
 5. Choose type "Full Stack Cloud Application"
    
-    <br>![](/exercises/ex0/images/create_devspace2.png)
+    <br>![](/intro-to-cap/ex0/images/create_devspace2.png)
 
 6. Wait for the status to become "RUNNING" and enter the newly created devspace.
 
@@ -36,7 +36,7 @@ The `ws` folder is where you will be developing the CAP applications.
 
 You should see this folder structure:
 
-<br>![](/exercises/ex0/images/00_02_0010.png)
+<br>![](/intro-to-cap/ex0/images/00_02_0010.png)
 
 Ignore folder _xtravels_ for the time being, it will only be used in [Exercise 2](../ex2/README.md).
 
