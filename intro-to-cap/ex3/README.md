@@ -123,10 +123,12 @@ interface to entity `Customer` of the imported API.
     namespace sap.capire.travels.masterdata;
     
     @federated entity Customers as projection on external.A_Customer {
-      Customer as ID,
-      CustomerName as FullName,
-      FiscalAddress as Street,
-      CityCode as PostalCode,
+	  Customer as ID,
+	  CustomerName as FullName,
+	  FiscalAddress as Street,
+	  FiscalAddress as City,
+	  CityCode as PostalCode,
+	  CityCode as PhoneNumber,
     }
     ```
 
