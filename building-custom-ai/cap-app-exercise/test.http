@@ -43,15 +43,6 @@ Authorization: Basic {{auth}}
     "question": "Find a single keyboard with RGB backlighting"
 }
 
-### 5. Single cheapest wireless mouse
-POST {{baseUrl}}/askQuestion
-Content-Type: application/json
-Authorization: Basic {{auth}}
-
-{
-    "question": "What is the single cheapest wireless mouse available?"
-}
-
 ###
 # ─────────────────────────────────────────────
 #  CDS – Products entity (read-only)
