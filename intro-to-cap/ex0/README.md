@@ -4,6 +4,8 @@ In this session, you will create two CAP applications. The apps are developed in
 In this preparation section, you will  set up the local workspace
 where you develop the apps.
 
+CAP website: https://cap.cloud.sap/docs/
+
 
 ## Preparation 1 - Create devspace
 
