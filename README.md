@@ -15,6 +15,6 @@ SAP workshop
 
 Get started: 
 
-Continue to - [Excercise 0 - Prepare for cAP development](/exercises/ex0/README.MD)
+Continue to - [Excercise 0 - Prepare for CAP development](/intro-to-cap/ex0/README.MD)
 
 
