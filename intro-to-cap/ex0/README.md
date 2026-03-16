@@ -12,11 +12,11 @@ CAP website: https://cap.cloud.sap/docs/
 1. Go to SAP Build.
     <br>![](/intro-to-cap/ex0/images/Build_link.png)
 
-   Login by selecting: Equinor Axure AD
-    <br>![](/intro-to-cap/ex0/images/Build_link.png)
+   Login by selecting: Equinor Azure AD
+    <br>![](/intro-to-cap/ex0/images/azure_ad.png)
    
 2. Go to Dev Space Manager
-     <br>![](/intro-to-cap/ex0/images/azure_ad.png)
+     <br>![](/intro-to-cap/ex0/images/Space_link.png)
 
 4. Create a new Dev Space
     <br>![](/intro-to-cap/ex0/images/create_devspace.png)
@@ -30,6 +30,7 @@ CAP website: https://cap.cloud.sap/docs/
 ## Preparation 2 - Clone
 
 Enter the folder structure and select "Clone Repository"
+<br>![](/intro-to-cap/ex0/images/clone.png)
 
 THe repository link is : https://github.com/equinor/edc-removing-the-sap-from-the-sap-developer.git
 
