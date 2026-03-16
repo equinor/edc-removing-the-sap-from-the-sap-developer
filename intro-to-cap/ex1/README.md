@@ -13,7 +13,7 @@ After completing these steps, you will have the basic project structure of the x
 
 1. In BAS, open a terminal.
 
-    <br>![](/intro-to-cap/ex1/images/01_01_0010.png)
+    <br>![](/intro-to-cap/ex1/images/new_terminal.png)
 
 2. Go to the terminal and create the xflights project with
     ```sh
@@ -132,7 +132,7 @@ type Price : Decimal(9,4);
 3. Observe the console output for `cds watch`. As soon as you save the file _schema.cds_,
 the still running `cds watch` reacts immediately with new output like this:
 
-    <br>![](/intro-to-cap/ex1/images/01_02_0020.png)
+    <br>![](/intro-to-cap/ex1/images/cds_watch_waiting_for_models.png)
 
     `cds watch` detected the changes in _db/schema.cds_ and automatically
     bootstrapped an in-memory SQLite database when restarting the server process.
