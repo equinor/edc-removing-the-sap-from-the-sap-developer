@@ -13,7 +13,7 @@ After completing these steps, you will have the basic project structure of the x
 
 1. In BAS, open a terminal.
 
-    <br>![](/exercises/ex1/images/01_01_0010.png)
+    <br>![](/intro-to-cap/ex1/images/01_01_0010.png)
 
 2. Go to the terminal and create the xflights project with
     ```sh
@@ -28,7 +28,7 @@ After completing these steps, you will have the basic project structure of the x
     npm install
     ```
 
-    <br>![](/exercises/ex1/images/01_01_0020.png)
+    <br>![](/intro-to-cap/ex1/images/01_01_0020.png)
 
 3. In folder _xflights_, add a file _.env_ with this content:
     ```
@@ -44,7 +44,7 @@ After completing these steps, you will have the basic project structure of the x
 
 5. See the output in the terminal:
 
-    <br>![](/exercises/ex1/images/01_01_0030.png)
+    <br>![](/intro-to-cap/ex1/images/01_01_0030.png)
 
 
 
@@ -65,7 +65,7 @@ The first part of the new app is the domain model with these entities:
 * Supplements  
   Things you can add to a flight, like additional luggage, food, drinks.
 
-<br>![](/exercises/ex1/images/01_02_0010.png)
+<br>![](/intro-to-cap/ex1/images/01_02_0010.png)
 
 1. In folder _xflights/db_, create a file named _schema.cds_.
 
@@ -132,7 +132,7 @@ type Price : Decimal(9,4);
 3. Observe the console output for `cds watch`. As soon as you save the file _schema.cds_,
 the still running `cds watch` reacts immediately with new output like this:
 
-    <br>![](/exercises/ex1/images/01_02_0020.png)
+    <br>![](/intro-to-cap/ex1/images/01_02_0020.png)
 
     `cds watch` detected the changes in _db/schema.cds_ and automatically
     bootstrapped an in-memory SQLite database when restarting the server process.
@@ -182,14 +182,14 @@ to a full fledged maintenance UI for the xflights app, but this is not part of t
 
 3. Observe the output of `cds watch`:
 
-    <br>![](/exercises/ex1/images/01_03_0010.png)
+    <br>![](/intro-to-cap/ex1/images/01_03_0010.png)
 
     Service `FlightsService` is now served as OData service.
 
 4. Open the automatically served index page in your browser at [localhost:4005](http://localhost:4005/).
 The entities are exposed via OData.
 
-    <br>![](/exercises/ex1/images/01_03_0020-60.png)
+    <br>![](/intro-to-cap/ex1/images/01_03_0020-60.png)
 
 5. Click on the link for `Flights`. You will see that there are no entities yet.
 
@@ -205,12 +205,12 @@ You will now add some CSV files with data for the xflights app.
 1. Copy the folder [assets/ex1/data](../../assets/ex1/data) into folder _xflights/db_.
 The result should look like this:
 
-    <br>![](/exercises/ex1/images/01_04_0010.png)
+    <br>![](/intro-to-cap/ex1/images/01_04_0010.png)
 
 
 2. Observe the console output: `cds watch` automatically restarts and detects the data files:
 
-    <br>![](/exercises/ex1/images/01_04_0020.png)
+    <br>![](/intro-to-cap/ex1/images/01_04_0020.png)
 
 3. Go back to the index page [localhost:4005](http://localhost:4005/) and click on any of the entities to see the new content.
 
@@ -255,7 +255,7 @@ for entities `Flights` and `Connections`.
 index page on [localhost:4005](http://localhost:4005/) and click the
 "Fiori preview" link for entity `Flights` or `Connections`.
 
-    <br>![](/exercises/ex1/images/01_05_0010-60.png)
+    <br>![](/intro-to-cap/ex1/images/01_05_0010-60.png)
 
     The columns specified in the `@UI.LineItem` annotations are shown by default.
 
@@ -299,12 +299,12 @@ Copy the folder [assets/ex1/_i18n](../../assets/ex1/_i18n) into folder _xflights
 
     The result should look like this:
 
-    <br>![](/exercises/ex1/images/01_06_0010.png)
+    <br>![](/intro-to-cap/ex1/images/01_06_0010.png)
 
 3. Go back to the browser window with the Fiori preview and refresh.
 Notice the change in the column labels.
 
-    <br>![](/exercises/ex1/images/01_06_0020-60.png)
+    <br>![](/intro-to-cap/ex1/images/01_06_0020-60.png)
 
 
 
@@ -368,7 +368,7 @@ that acts as an API to retrieve some data from the xflights app.
 on [localhost:4005](http://localhost:4005/) and see the new service being presented via these protocols
 (you may need to refresh the page).
 
-    <br>![](/exercises/ex1/images/01_07_0010-60.png)
+    <br>![](/intro-to-cap/ex1/images/01_07_0010-60.png)
 
 
 4. Click for example the [Flights](http://localhost:4005/rest/data/Flights) link in
@@ -412,7 +412,7 @@ This package contains everything that is needed in a consuming app, including so
 
 4. Have a look at the new folder _apis/flights-data_.
 
-    <br>![](/exercises/ex1/images/01_08_0010.png)
+    <br>![](/intro-to-cap/ex1/images/01_08_0010.png)
 
     * The most important part is the service definition in _apis/flights-data/services.csn_.
       It is a CSN that contains only the entities exposed in service `sap.capire.flights.data`.
