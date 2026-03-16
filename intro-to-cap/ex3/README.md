@@ -46,9 +46,9 @@ API "Business Partner (A2X) " to _ws/xtravels_.
 
 
 
-## Exercise 3.3 - Import Data Product metadata
+## Exercise 3.3 - Import API metadata
 
-After completing these steps, you will have imported the Data Product's
+After completing these steps, you will have imported the API's
 metadata as API package into your xtravels project.
 
 1. Go to the terminal of the xtravels app.
@@ -144,7 +144,7 @@ thus you don't add consumption views for them.
 
 
 
-## Exercise 3.5 - Use the Data Product in the model
+## Exercise 3.5 - Use the API in the model
 
 After completing these steps, you will have replaced local entity `Passenger`
 with entity `Customer` of the Data Product.
