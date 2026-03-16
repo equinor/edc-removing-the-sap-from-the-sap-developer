@@ -182,7 +182,7 @@ to a full fledged maintenance UI for the xflights app, but this is not part of t
 
 3. Observe the output of `cds watch`:
 
-    <br>![](/intro-to-cap/ex1/images/01_03_0010.png)
+    <br>![](/intro-to-cap/ex1/images/cds_watch_loaded_3.png)
 
     Service `FlightsService` is now served as OData service.
 
