@@ -2,13 +2,17 @@
     "VCAP_SERVICES": {
         "aicore": [
             {
-                "label": "",
-                "plan": "",
+                "label": "aicore",
+                "plan": "extended",
                 "name": "",
                 "credentials": {
                     "clientid": "",
                     "clientsecret": "",
                     "url": "",
+                    "identityzone": "",
+                    "identityzoneid": "",
+                    "appname": "",
+                    "credential-type": "",
                     "serviceurls": {
                         "AI_API_URL": ""
                     }
