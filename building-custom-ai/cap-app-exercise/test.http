@@ -7,7 +7,7 @@
 #  RAG – askQuestion
 # ─────────────────────────────────────────────
 
-### 1. RGB backlight keyboards (notebook test case 1)
+### 1. RGB backlight keyboards
 POST {{baseUrl}}/askQuestion
 Content-Type: application/json
 Authorization: Basic {{auth}}
@@ -16,7 +16,7 @@ Authorization: Basic {{auth}}
     "question": "Find all keyboards with RGB backlighting"
 }
 
-### 2. Cheapest wireless mouse (notebook test case 2)
+### 2. Cheapest wireless mouse
 POST {{baseUrl}}/askQuestion
 Content-Type: application/json
 Authorization: Basic {{auth}}
@@ -25,7 +25,7 @@ Authorization: Basic {{auth}}
     "question": "What is the cheapest wireless mouse available? Return only one."
 }
 
-### 3. Headset with rating 5 (notebook test case 3)
+### 3. Headset with rating 5
 POST {{baseUrl}}/askQuestion
 Content-Type: application/json
 Authorization: Basic {{auth}}
@@ -34,7 +34,7 @@ Authorization: Basic {{auth}}
     "question": "Suggest a headset with a rating of 5. Return only one."
 }
 
-### 4. Single RGB keyboard (notebook free-form example)
+### 4. Single RGB keyboard
 POST {{baseUrl}}/askQuestion
 Content-Type: application/json
 Authorization: Basic {{auth}}
@@ -43,7 +43,7 @@ Authorization: Basic {{auth}}
     "question": "Find a single keyboard with RGB backlighting"
 }
 
-### 5. Single cheapest wireless mouse (notebook free-form example)
+### 5. Single cheapest wireless mouse
 POST {{baseUrl}}/askQuestion
 Content-Type: application/json
 Authorization: Basic {{auth}}
