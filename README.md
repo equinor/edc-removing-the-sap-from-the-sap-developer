@@ -13,4 +13,8 @@ SAP workshop
 10. Closing remarks - Ingrid Marie
 
 
+Get started: 
+
+Continue to - [Excercise 0 - Prepare for cAP development](../ex0/README.md)
+
 
