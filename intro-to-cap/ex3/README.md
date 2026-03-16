@@ -230,39 +230,22 @@ the API entity `Customers` reading data from the S/4 sandbox system S09.
 	});
 ```
    
-Following the CAP principle of "local development and testing", you first
-test the xtravels app with the Data Product entities being mocked by local
-tables in a SQLite in-memory database.
 
-1. Add some test data: copy file
-[assets/ex3/sap.s4com-Customer.v1.Customer.csv](../../assets/ex3/sap.s4com-Customer.v1.Customer.csv)
-to folder _xtravels/db/data_. This provides some test data for mocking the
-`Customer` entity.
-
-    <br>![](/exercises/ex3/images/03_06_0010.png)
-
-    Have a look into the csv file: it only contains data for the columns actually used
-    in the consumption view.
-
-2. In the xtravels terminal, run
+5. In the xtravels terminal, run
   ```sh
   cds watch
   ```
 
-3. Observe the console output. It indicates that a local table is created for `Customer`
-and is filled with the data from the csv file.
 
-    <br>![](/exercises/ex3/images/03_06_0020.png)
+6. Open the automatically served index page in your browser at [localhost:4004](http://localhost:4004/).
 
-4. Open the automatically served index page in your browser at [localhost:4004](http://localhost:4004/).
-
-5. Click the link [/travels/webapp](http://localhost:4004/travels/webapp/index.html) to start the Fiori UI.  
+7. Click the link [/travels/webapp](http://localhost:4004/travels/webapp/index.html) to start the Fiori UI.  
 
     <br>![](/exercises/ex3/images/03_06_0030.png)
 
 The app looks almost like the last time you have started it
 in [Exercise 2.5](../ex2/README.md#exercise-25---run-the-xtravels-app-with-flights-being-mocked).
-This time, however, you see different data for "Customer", namely the test data you have just added via the csv file.
+This time, however, you see different data for "Customer", namely the data from S/4.
 
 
 
