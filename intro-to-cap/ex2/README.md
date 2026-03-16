@@ -18,7 +18,7 @@ created in the [Preparation](../ex0/README.md) section.
 Your workspace already contains a folder _xtravels_ with an
 almost complete xtravels app, including a Fiori UI in _xtravels/app/travels_.
 
-<br>![](/exercises/ex2/images/02_01_0010.png)
+<br>![](/intro-to-cap/ex2/images/02_01_0010.png)
 
 As some parts of the app are missing, the editor may show some error indicators,
 e.g. red underlines in file _xtravels/db/schema.cds_. Don't worry about them, they
@@ -37,11 +37,11 @@ will disappear when we add the missing parts.
       but this file currently is empty. The missing entities will later be provided by
       the API package exported from xflights.
 
-    <br>![](/exercises/ex2/images/02_01_0020.png)
+    <br>![](/intro-to-cap/ex2/images/02_01_0020.png)
 
 2. In VS Code, split the terminal:
 
-    <br>![](/exercises/ex2/images/02_01_0030.png)
+    <br>![](/intro-to-cap/ex2/images/02_01_0030.png)
 
 3. In the new terminal, change to the _xtravels_ folder (assuming the terminal has opened in your workspace root folder _ws_):
     ```sh
@@ -50,7 +50,7 @@ will disappear when we add the missing parts.
 
     Your VS Code window should now look like this:
 
-    <br>![](/exercises/ex2/images/02_01_0040.png)
+    <br>![](/intro-to-cap/ex2/images/02_01_0040.png)
 
 
 
@@ -66,7 +66,7 @@ that you have exported from the xflights app in the previous exercise.
 
 2. Look into _xtravels/package.json_. A new dependency has been added:
 
-    <br>![](/exercises/ex2/images/02_02_0010.png)
+    <br>![](/intro-to-cap/ex2/images/02_02_0010.png)
     
     Due to the workspace definition in _package.json_ (the one in the _ws_ folder),
     the exported API package in _apis_ is used to satisfy this new dependency.
@@ -149,7 +149,7 @@ from the API package being mocked by local entities.
 The entities in this service are represented as tables in the SQLite in-memory database
 and are filled with _csv_ data from the imported package:
 
-    <br>![](/exercises/ex2/images/02_05_0010.png)
+    <br>![](/intro-to-cap/ex2/images/02_05_0010.png)
 
 
 
@@ -158,7 +158,7 @@ and are filled with _csv_ data from the imported package:
 6. Click the link [/travels/webapp](http://localhost:4004/travels/webapp/index.html) to start the Fiori UI.
 You should see a full fledged xtravels app:
 
-    <br>![](/exercises/ex2/images/02_05_0020.png)
+    <br>![](/intro-to-cap/ex2/images/02_05_0020.png)
 
 
 
@@ -198,17 +198,17 @@ exposes service `sap.capire.flights.data` and connects to that service
 rather than mocking it (note that no csv data is loaded for the entites
 of this service).
 
-    <br>![](/exercises/ex2/images/02_06_0010.png)
+    <br>![](/intro-to-cap/ex2/images/02_06_0010.png)
 
     The data for `Flights` and `Supplements` is immediately loaded:
 
-    <br>![](/exercises/ex2/images/02_06_0020.png)
+    <br>![](/intro-to-cap/ex2/images/02_06_0020.png)
 
 5. Observe the output of `cds watch` in the xflights terminal.  
 Here you can see the incoming calls (from xtravels) to `GET` the
 data from entities `Flights` and `Supplements`.
 
-    <br>![](/exercises/ex2/images/02_06_0030.png)
+    <br>![](/intro-to-cap/ex2/images/02_06_0030.png)
 
 6. Go to the index page [localhost:4004](http://localhost:4004/) of the xtravels app
 and start the [xtravels web app](http://localhost:4004/travels/webapp/index.html).
@@ -231,7 +231,7 @@ In order to keep things simple, you will again use mocked master data entities
 2. Stop `cds watch` in the xflights terminal by typing `Ctrl+C`.
 
 3. Close the xflights terminal.
-    <br>![](/exercises/ex2/images/02_07_0010.png)
+    <br>![](/intro-to-cap/ex2/images/02_07_0010.png)
 
 
 
