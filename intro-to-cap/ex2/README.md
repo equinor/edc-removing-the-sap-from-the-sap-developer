@@ -39,7 +39,7 @@ will disappear when we add the missing parts.
 
     <br>![](/intro-to-cap/ex2/images/02_01_0020.png)
 
-2. In VS Code, split the terminal:
+2. In BAS, split the terminal:
 
     <br>![](/intro-to-cap/ex2/images/02_01_0030.png)
 
