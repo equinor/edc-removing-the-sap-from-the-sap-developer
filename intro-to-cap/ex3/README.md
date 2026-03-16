@@ -257,7 +257,6 @@ Stop `cds watch` by typing `Ctrl+C` into the xtravels terminal.
 
 ## Summary
 
-You've now imported S/4 Data Product "Customer" and tested the app locally with
-the Data Product entities being mocked.
+You've now imported S/4 API "Business Partner" and tested the app
 
-Continue to - [Exercise 4 - Deploy to SAP HANA Cloud](../ex4/README.md)
+
