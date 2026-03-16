@@ -10,7 +10,7 @@ an API:
 In this exercise, you will import the metadata for S/4 Data Product "Customer" to the xtravels app.
 You will then replace local entity `Passenger` with entity `Customer` from the Business Partner API.
 
-<br>![](/exercises/ex3/images/03_00_0010.png)
+<br>![](/intro-to-cap/ex3/images/03_00_0010.png)
 
 
 
@@ -21,12 +21,12 @@ in [SAP Business Accelerator Hub](https://api.sap.com/).
 
 1. Go to [SAP Business Accelerator Hub](https://api.sap.com/).
 
-    <br>![](/exercises/ex3/images/03_01_0010.png)
+    <br>![](/intro-to-cap/ex3/images/03_01_0010.png)
 
 2. Select the Product "SAP S/4HANA Cloud Private Edition".
 3. Select APIs and ODATA V2. Search for Business Partner. Select the API called "Business Partner (A2X)". 
 
-    <br>![](/exercises/ex3/images/business_partner_search.png)
+    <br>![](/intro-to-cap/ex3/images/business_partner_search.png)
 
 4. Log on with your SAP user and view the API documentation. Under the API Reference tab you can find the various endpoints including Customer which is the one we will use. 
 
@@ -40,7 +40,7 @@ API "Business Partner (A2X) " to _ws/xtravels_.
 
 1. At the bottom of the screen for API "Business Partner (A2X)" go the the API Specification section and download the EDMX
 
-    <br>![](/exercises/ex3/images/download_edmx.png)
+    <br>![](/intro-to-cap/ex3/images/download_edmx.png)
 
 2. Copy the file to folder _xtravels_ in your workspace.
 
@@ -61,7 +61,7 @@ with this command:
 
     The import creates a folder _xtravels\srv\external with a new cds file.
 
-   <br>![](/exercises/ex3/images/srv_external.png)
+   <br>![](/intro-to-cap/ex3/images/srv_external.png)
 
 
 
@@ -99,7 +99,7 @@ The API entities come with a lot of annotations, e.g. `@label` for labels.
 
 6. Have a look at file _xtravels/package.json_. A new cds section has been added:
 
-    <br>![](/exercises/ex3/images/package_json_dependency.png)
+    <br>![](/intro-to-cap/ex3/images/package_json_dependency.png)
 
 
 7. In the xtravels terminal, run
