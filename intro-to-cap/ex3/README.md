@@ -141,6 +141,8 @@ that you actually want to use in your application.
 In addition, the fields of the imported API entity `Customer` are renamed so
 that they match those of entity `Passengers`, which you are going to replace.
 
+Note: Since the endpoint A_Customer does not completly match the type of Passengers, and we have little data in our S/4 sandbox system a few duplicates are added for simplicity.
+
 You won't use the other entities of the API in our xtravels app,
 thus you don't add consumption views for them.
 
