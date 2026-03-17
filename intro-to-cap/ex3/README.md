@@ -225,8 +225,13 @@ the API entity `Customers` reading data from the S/4 sandbox system S09.
    ```env
    destinations=[{"name":"EDC_API_BUSINESS_PARTNER","proxyHost":"http://127.0.0.1","proxyPort":"8887","url":"http://EDC_API_BUSINESS_PARTNER.dest"}]
    ```
+   EDC_API_BUSINESS_PARTNER is the destination to the on-premise system configured in BTP on the account level. After setting up the configuration, you may need to reload the local host by running the following command in the terminal:
 
-4. Add the following code in the travel-service.js file. This will trigger the API call in S/4
+   ```sh
+   curl localhost:8887/reload
+   ```
+
+5. Add the following code in the travel-service.js file. This will trigger the API call in S/4
 
 ```js
  const { Customers } = this.entities;
